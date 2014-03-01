@@ -21,12 +21,12 @@ using namespace std;
 
 class VSParser {
 public:
-    VSParser(vector<char*> parameters);
-    
+    VSParser(vector<const char*> &parameters);
     void parseData(VSData &data);
     
 private:
-    unordered_map<char*, int> _words;
+    unordered_map<string, int> _words;
+    vector<const char*> _parameters;
 };
 
 #endif /* defined(__Vasco__VSParser__) */

@@ -7,108 +7,106 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7786FB5E18C2617C00C211BE /* VSManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B618C1477800A0A776 /* VSManager.cpp */; };
-		7786FB6018C2617C00C211BE /* VSExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B918C147A200A0A776 /* VSExplorer.cpp */; };
-		7786FB6218C2617C00C211BE /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AF18C146F400A0A776 /* VSData.cpp */; };
-		7786FB6418C2617C00C211BE /* VSParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AC18C146D300A0A776 /* VSParser.cpp */; };
-		7786FB6618C2617C00C211BE /* VSLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B318C1472200A0A776 /* VSLearner.cpp */; };
-		7786FB6818C2617C00C211BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83A018C146B400A0A776 /* main.cpp */; };
-		77AA83A318C146B400A0A776 /* Vasco.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77AA83A218C146B400A0A776 /* Vasco.1 */; };
+		77554D0818C2905400EBCB47 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77554D0718C2905400EBCB47 /* libcurl.dylib */; };
+		77A87BC118C2638E003BAFD3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC018C2638E003BAFD3 /* main.cpp */; };
+		77A87BC318C2638E003BAFD3 /* Vasco.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77A87BC218C2638E003BAFD3 /* Vasco.1 */; };
+		77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC918C263A0003BAFD3 /* VSData.cpp */; };
+		77A87BD418C263A0003BAFD3 /* VSExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */; };
+		77A87BD518C263A0003BAFD3 /* VSLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */; };
+		77A87BD618C263A0003BAFD3 /* VSManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCF18C263A0003BAFD3 /* VSManager.cpp */; };
+		77A87BD718C263A0003BAFD3 /* VSParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BD118C263A0003BAFD3 /* VSParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		77AA839B18C146B400A0A776 /* CopyFiles */ = {
+		77A87BBB18C2638E003BAFD3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1;
+			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				77AA83A318C146B400A0A776 /* Vasco.1 in CopyFiles */,
+				77A87BC318C2638E003BAFD3 /* Vasco.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		77AA839D18C146B400A0A776 /* Vasco */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vasco; sourceTree = BUILT_PRODUCTS_DIR; };
-		77AA83A018C146B400A0A776 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		77AA83A218C146B400A0A776 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
-		77AA83AC18C146D300A0A776 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSParser.cpp; sourceTree = "<group>"; };
-		77AA83AD18C146D300A0A776 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSParser.h; sourceTree = "<group>"; };
-		77AA83AF18C146F400A0A776 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSData.cpp; sourceTree = "<group>"; };
-		77AA83B018C146F400A0A776 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSData.h; sourceTree = "<group>"; };
-		77AA83B318C1472200A0A776 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
-		77AA83B418C1472200A0A776 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
-		77AA83B618C1477800A0A776 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSManager.cpp; sourceTree = "<group>"; };
-		77AA83B718C1477800A0A776 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSManager.h; sourceTree = "<group>"; };
-		77AA83B918C147A200A0A776 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSExplorer.cpp; sourceTree = "<group>"; };
-		77AA83BA18C147A200A0A776 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSExplorer.h; sourceTree = "<group>"; };
+		77554D0718C2905400EBCB47 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		77A87BBD18C2638E003BAFD3 /* Vasco */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vasco; sourceTree = BUILT_PRODUCTS_DIR; };
+		77A87BC018C2638E003BAFD3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		77A87BC218C2638E003BAFD3 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
+		77A87BC918C263A0003BAFD3 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSData.cpp; sourceTree = "<group>"; };
+		77A87BCA18C263A0003BAFD3 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSData.h; sourceTree = "<group>"; };
+		77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSExplorer.cpp; sourceTree = "<group>"; };
+		77A87BCC18C263A0003BAFD3 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSExplorer.h; sourceTree = "<group>"; };
+		77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
+		77A87BCE18C263A0003BAFD3 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
+		77A87BCF18C263A0003BAFD3 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSManager.cpp; sourceTree = "<group>"; };
+		77A87BD018C263A0003BAFD3 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSManager.h; sourceTree = "<group>"; };
+		77A87BD118C263A0003BAFD3 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSParser.cpp; sourceTree = "<group>"; };
+		77A87BD218C263A0003BAFD3 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSParser.h; sourceTree = "<group>"; };
+		77C70C3218C26D8F00E115A2 /* web2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		77AA839A18C146B400A0A776 /* Frameworks */ = {
+		77A87BBA18C2638E003BAFD3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77554D0818C2905400EBCB47 /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		77AA839418C146B400A0A776 = {
+		77A87BB418C2638E003BAFD3 = {
 			isa = PBXGroup;
 			children = (
-				77AA839F18C146B400A0A776 /* Vasco */,
-				77AA839E18C146B400A0A776 /* Products */,
+				77A87BBF18C2638E003BAFD3 /* Vasco */,
+				77A87BBE18C2638E003BAFD3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		77AA839E18C146B400A0A776 /* Products */ = {
+		77A87BBE18C2638E003BAFD3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				77AA839D18C146B400A0A776 /* Vasco */,
+				77A87BBD18C2638E003BAFD3 /* Vasco */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		77AA839F18C146B400A0A776 /* Vasco */ = {
+		77A87BBF18C2638E003BAFD3 /* Vasco */ = {
 			isa = PBXGroup;
 			children = (
-				77AA83B218C146FF00A0A776 /* Classes */,
-				77AA83A018C146B400A0A776 /* main.cpp */,
-				77AA83A218C146B400A0A776 /* Vasco.1 */,
+				77A87BC018C2638E003BAFD3 /* main.cpp */,
+				77A87BC918C263A0003BAFD3 /* VSData.cpp */,
+				77A87BCA18C263A0003BAFD3 /* VSData.h */,
+				77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */,
+				77A87BCC18C263A0003BAFD3 /* VSExplorer.h */,
+				77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */,
+				77A87BCE18C263A0003BAFD3 /* VSLearner.h */,
+				77A87BCF18C263A0003BAFD3 /* VSManager.cpp */,
+				77A87BD018C263A0003BAFD3 /* VSManager.h */,
+				77A87BD118C263A0003BAFD3 /* VSParser.cpp */,
+				77A87BD218C263A0003BAFD3 /* VSParser.h */,
+				77C70C3218C26D8F00E115A2 /* web2 */,
+				77A87BC218C2638E003BAFD3 /* Vasco.1 */,
+				77554D0718C2905400EBCB47 /* libcurl.dylib */,
 			);
 			path = Vasco;
-			sourceTree = "<group>";
-		};
-		77AA83B218C146FF00A0A776 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				77AA83B618C1477800A0A776 /* VSManager.cpp */,
-				77AA83B718C1477800A0A776 /* VSManager.h */,
-				77AA83B918C147A200A0A776 /* VSExplorer.cpp */,
-				77AA83BA18C147A200A0A776 /* VSExplorer.h */,
-				77AA83AF18C146F400A0A776 /* VSData.cpp */,
-				77AA83B018C146F400A0A776 /* VSData.h */,
-				77AA83AC18C146D300A0A776 /* VSParser.cpp */,
-				77AA83AD18C146D300A0A776 /* VSParser.h */,
-				77AA83B318C1472200A0A776 /* VSLearner.cpp */,
-				77AA83B418C1472200A0A776 /* VSLearner.h */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		77AA839C18C146B400A0A776 /* Vasco */ = {
+		77A87BBC18C2638E003BAFD3 /* Vasco */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77AA83A618C146B400A0A776 /* Build configuration list for PBXNativeTarget "Vasco" */;
+			buildConfigurationList = 77A87BC618C2638E003BAFD3 /* Build configuration list for PBXNativeTarget "Vasco" */;
 			buildPhases = (
-				77AA839918C146B400A0A776 /* Sources */,
-				77AA839A18C146B400A0A776 /* Frameworks */,
-				77AA839B18C146B400A0A776 /* CopyFiles */,
+				77A87BB918C2638E003BAFD3 /* Sources */,
+				77A87BBA18C2638E003BAFD3 /* Frameworks */,
+				77A87BBB18C2638E003BAFD3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -116,53 +114,53 @@
 			);
 			name = Vasco;
 			productName = Vasco;
-			productReference = 77AA839D18C146B400A0A776 /* Vasco */;
+			productReference = 77A87BBD18C2638E003BAFD3 /* Vasco */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		77AA839518C146B400A0A776 /* Project object */ = {
+		77A87BB518C2638E003BAFD3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jamil Dhanani";
 			};
-			buildConfigurationList = 77AA839818C146B400A0A776 /* Build configuration list for PBXProject "Vasco" */;
+			buildConfigurationList = 77A87BB818C2638E003BAFD3 /* Build configuration list for PBXProject "Vasco" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 77AA839418C146B400A0A776;
-			productRefGroup = 77AA839E18C146B400A0A776 /* Products */;
+			mainGroup = 77A87BB418C2638E003BAFD3;
+			productRefGroup = 77A87BBE18C2638E003BAFD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				77AA839C18C146B400A0A776 /* Vasco */,
+				77A87BBC18C2638E003BAFD3 /* Vasco */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		77AA839918C146B400A0A776 /* Sources */ = {
+		77A87BB918C2638E003BAFD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7786FB5E18C2617C00C211BE /* VSManager.cpp in Sources */,
-				7786FB6018C2617C00C211BE /* VSExplorer.cpp in Sources */,
-				7786FB6218C2617C00C211BE /* VSData.cpp in Sources */,
-				7786FB6418C2617C00C211BE /* VSParser.cpp in Sources */,
-				7786FB6618C2617C00C211BE /* VSLearner.cpp in Sources */,
-				7786FB6818C2617C00C211BE /* main.cpp in Sources */,
+				77A87BD518C263A0003BAFD3 /* VSLearner.cpp in Sources */,
+				77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */,
+				77A87BD618C263A0003BAFD3 /* VSManager.cpp in Sources */,
+				77A87BD718C263A0003BAFD3 /* VSParser.cpp in Sources */,
+				77A87BD418C263A0003BAFD3 /* VSExplorer.cpp in Sources */,
+				77A87BC118C2638E003BAFD3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		77AA83A418C146B400A0A776 /* Debug */ = {
+		77A87BC418C2638E003BAFD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -199,7 +197,7 @@
 			};
 			name = Debug;
 		};
-		77AA83A518C146B400A0A776 /* Release */ = {
+		77A87BC518C2638E003BAFD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -230,14 +228,14 @@
 			};
 			name = Release;
 		};
-		77AA83A718C146B400A0A776 /* Debug */ = {
+		77A87BC718C2638E003BAFD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		77AA83A818C146B400A0A776 /* Release */ = {
+		77A87BC818C2638E003BAFD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -247,25 +245,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		77AA839818C146B400A0A776 /* Build configuration list for PBXProject "Vasco" */ = {
+		77A87BB818C2638E003BAFD3 /* Build configuration list for PBXProject "Vasco" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				77AA83A418C146B400A0A776 /* Debug */,
-				77AA83A518C146B400A0A776 /* Release */,
+				77A87BC418C2638E003BAFD3 /* Debug */,
+				77A87BC518C2638E003BAFD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77AA83A618C146B400A0A776 /* Build configuration list for PBXNativeTarget "Vasco" */ = {
+		77A87BC618C2638E003BAFD3 /* Build configuration list for PBXNativeTarget "Vasco" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				77AA83A718C146B400A0A776 /* Debug */,
-				77AA83A818C146B400A0A776 /* Release */,
+				77A87BC718C2638E003BAFD3 /* Debug */,
+				77A87BC818C2638E003BAFD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 77AA839518C146B400A0A776 /* Project object */;
+	rootObject = 77A87BB518C2638E003BAFD3 /* Project object */;
 }

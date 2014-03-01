@@ -16,9 +16,7 @@ using namespace std;
 
 class VSData {
 public:
-    VSData(char* _rawHtml, vector<double> &supervisedValues);
-    VSData(VSData &oth);
-    ~VSData();
+    VSData(char* _rawHtml, vector<double> &supervisedValues, int features);
     
     void processContent();
     
@@ -32,7 +30,7 @@ private:
     char*           _rawHtml;
     string          _content;
     vector<char*>   _words;
-    vector<int>     _features; // 'Word count'
+    int             *_features; // 'Word count'
     
     /* Assigned Learning Values */
     vector<double> _learningValues;
@@ -43,14 +41,15 @@ private:
 public:
     /* Accessors */
     vector<char*>   words() const;
-    vector<int>     features() const;
+    int*            features() const;
     const char*     content() const;
-    vector<double>   learningValues() const;
-    vector<double>   supervisedValues() const;
+    vector<double>  learningValues() const;
+    vector<double>  supervisedValues() const;
     
     /* Mutators */
     void setLearningValueAtIndex(int index, float value);
     void setLearningValues(vector<double> learningValues);
+    void setFeaturesAtIndex(int index, int value);
     
 };
 

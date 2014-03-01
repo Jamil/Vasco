@@ -12,30 +12,25 @@
 #include <iostream>
 #include <cassert>
 #include <exception>
+#include <cmath>
 #include "VSData.h"
-
-class VSLearnerException : exception {};
-class VSLearnerExceptionNoData : VSLearnerException {
-    virtual const char* what() const throw() {
-        return "No VSData passed to constructor";
-    }
-} vs_learner_exception_no_data;
 
 class VSLearner {
 public:
-    VSLearner(vector<char*> &parameters, vector<VSData> *data, float learningRate);
+    VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
     
-    vector<double>* updateParameters();
+    void updateUntilConvergence(float tolerance);
+    double** updateParameters();
     double getHypothesisForData(const VSData &data);
     
 private:
-    vector<VSData>  *_data;
+    vector<VSData>          *_data;
     
-    float           _learningRate;
-    
-    int             _M;                  // Number of parameters
-    vector<double>  _parameterValues;    // Parameter values
-    vector<char*>   _parameterNames;     // Parameter names (optional)
+    float                   _learningRate;
+    int                     _IDENT;
+    int                     _M;                  // Number of parameters
+    double                  *_parameterValues;   // Parameter values
+    vector<const char*>     _parameterNames;     // Parameter names (optional)
     
     double _sum_err_tr(int index);
 };

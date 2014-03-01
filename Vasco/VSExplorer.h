@@ -10,5 +10,20 @@
 #define __Vasco__VSExplorer__
 
 #include <iostream>
+#include <curl/curl.h>
+
+using namespace std;
+
+class VSExplorer {
+public:
+    VSExplorer(string URL);
+    
+    void stopExploring();
+    void startExploring();
+    
+private:
+    void exploreURL(string URL);
+    
+};
 
 #endif /* defined(__Vasco__VSExplorer__) */

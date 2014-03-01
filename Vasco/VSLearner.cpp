@@ -8,47 +8,71 @@
 
 #include "VSLearner.h"
 
-VSLearner::VSLearner(vector<char*> &parameters, vector<VSData> *data, float learningRate) {
+VSLearner::VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT) {
     /* You can initialize a VSLearner with no data, but you should pass an empty vector rather than NULL. The training examples should be stored OUTSIDE of the class. */
-    
-    if (!data)
-        throw vs_learner_exception_no_data;
     
     _parameterNames = parameters;
     _learningRate = learningRate;
+    _data = data;
+    _IDENT = IDENT;
     
     // Initialize theta values (parameters) to the zero vector
-    for (int i = 0; i < _parameterNames.size(); i++)
-        _parameterValues.push_back(0);
+    _M = (int)parameters.size();
+    _parameterValues = (double*)malloc(sizeof(double) * _M);
+    for (int i = 0; i < _M; i++)
+        _parameterValues[i] = 0;
 }
 
 double VSLearner::getHypothesisForData(const VSData &data) {
     // h_{\theta}(x) = \theta^{T}x
     
-    int hyp = 0;
-    for (int i = 0; i < data.words().size(); i++) {
-        hyp += data.features().at(i) * _parameterValues.at(i);
+    double hyp = 0;
+    for (int i = 0; i < _M; i++) {
+        hyp += data.features()[i] * _parameterValues[i];
     }
     return hyp;
 }
 
 double VSLearner::_sum_err_tr(int index) {
     double error = 0;
+    
+    // ∑(y−h(x))xj
     for (int i = 0; i < _data->size(); i++) {
-        // θj:=θj+(y−h(x))xj
-        error += _data->at(i).features().at(index) + getHypothesisForData(_data->at(i));
+        error += (_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i))) * _data->at(i).features()[index];
     }
+    
     return error;
 }
 
-vector<double>* VSLearner::updateParameters() {
+double** VSLearner::updateParameters() {
     // Perform batch gradient descent on all training examples
     
     // Iterate through parameters
-    for (int i = 0; i < _parameterValues.size(); i++) {
-        _parameterValues.at(i) += _learningRate * _sum_err_tr(i);
+    for (int i = 0; i < _M; i++) {
+        _parameterValues[i] += _learningRate * _sum_err_tr(i);
+        //cout << _parameterValues[i] << endl;
     }
     
     return &_parameterValues;
+}
+
+void VSLearner::updateUntilConvergence(float tolerance) {
+    int examples = (int)_data->size();
+    
+    double cumulativeError = 10000;
+    double previousError = 0;
+    
+    while (fabs((previousError - cumulativeError)/cumulativeError) > tolerance) {
+        previousError = cumulativeError;
+        
+        updateParameters();
+        
+        cumulativeError = 0;
+        for (int i = 0; i < examples; i++) {
+            cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
+        }
+        cout << "Cumulative Error: " << cumulativeError << endl;
+    }
+
 }
 

@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>10CFCE3C-3941-4343-AB53-96978B35E808</string>
+	<string>5CE622CA-7784-40A8-8286-B5A527C83E29</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Vasco</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>66997181-5DA2-4F37-B5D1-357070BF9395</key>
+		<key>8C53F7DE-F42B-45B7-9962-74FF2F0B20DC</key>
 		<string>https://github.com/Jamil/Vasco-Explorer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Vasco.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>66997181-5DA2-4F37-B5D1-357070BF9395</key>
+		<key>8C53F7DE-F42B-45B7-9962-74FF2F0B20DC</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>66997181-5DA2-4F37-B5D1-357070BF9395</string>
+	<string>8C53F7DE-F42B-45B7-9962-74FF2F0B20DC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>66997181-5DA2-4F37-B5D1-357070BF9395</string>
+			<string>8C53F7DE-F42B-45B7-9962-74FF2F0B20DC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Vasco</string>
 		</dict>
