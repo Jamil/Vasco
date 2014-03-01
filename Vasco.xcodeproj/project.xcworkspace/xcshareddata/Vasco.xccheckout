@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>10CFCE3C-3941-4343-AB53-96978B35E808</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Vasco</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>66997181-5DA2-4F37-B5D1-357070BF9395</key>
+		<string>https://github.com/Jamil/Vasco-Explorer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Vasco.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>66997181-5DA2-4F37-B5D1-357070BF9395</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Jamil/Vasco-Explorer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>66997181-5DA2-4F37-B5D1-357070BF9395</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>66997181-5DA2-4F37-B5D1-357070BF9395</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Vasco</string>
+		</dict>
+	</array>
+</dict>
+</plist>

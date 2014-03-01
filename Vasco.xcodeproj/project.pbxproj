@@ -31,18 +31,18 @@
 
 /* Begin PBXFileReference section */
 		77AA839D18C146B400A0A776 /* Vasco */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vasco; sourceTree = BUILT_PRODUCTS_DIR; };
-		77AA83A018C146B400A0A776 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		77AA83A218C146B400A0A776 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
+		77AA83A018C146B400A0A776 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
+		77AA83A218C146B400A0A776 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Vasco.1; path = ../Vasco.1; sourceTree = "<group>"; };
 		77AA83AC18C146D300A0A776 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSParser.cpp; path = ../VSParser.cpp; sourceTree = "<group>"; };
 		77AA83AD18C146D300A0A776 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSParser.h; path = ../VSParser.h; sourceTree = "<group>"; };
 		77AA83AF18C146F400A0A776 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSData.cpp; path = ../VSData.cpp; sourceTree = "<group>"; };
 		77AA83B018C146F400A0A776 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSData.h; path = ../VSData.h; sourceTree = "<group>"; };
-		77AA83B318C1472200A0A776 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
-		77AA83B418C1472200A0A776 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
-		77AA83B618C1477800A0A776 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSManager.cpp; sourceTree = "<group>"; };
-		77AA83B718C1477800A0A776 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSManager.h; sourceTree = "<group>"; };
-		77AA83B918C147A200A0A776 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSExplorer.cpp; sourceTree = "<group>"; };
-		77AA83BA18C147A200A0A776 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSExplorer.h; sourceTree = "<group>"; };
+		77AA83B318C1472200A0A776 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSLearner.cpp; path = ../VSLearner.cpp; sourceTree = "<group>"; };
+		77AA83B418C1472200A0A776 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSLearner.h; path = ../VSLearner.h; sourceTree = "<group>"; };
+		77AA83B618C1477800A0A776 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSManager.cpp; path = ../VSManager.cpp; sourceTree = "<group>"; };
+		77AA83B718C1477800A0A776 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSManager.h; path = ../VSManager.h; sourceTree = "<group>"; };
+		77AA83B918C147A200A0A776 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSExplorer.cpp; path = ../VSExplorer.cpp; sourceTree = "<group>"; };
+		77AA83BA18C147A200A0A776 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSExplorer.h; path = ../VSExplorer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
