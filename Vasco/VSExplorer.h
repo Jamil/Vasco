@@ -10,20 +10,35 @@
 #define __Vasco__VSExplorer__
 
 #include <iostream>
+#include <vector>
+#include <queue>
+#include <fstream>
 #include <curl/curl.h>
 
+#include "VSLearner.h"
+#include "VSParser.h"
+
 using namespace std;
+
+typedef enum category {
+    Technology, News, Science, Sports
+} Category;
 
 class VSExplorer {
 public:
     VSExplorer(string URL);
-    
-    void stopExploring();
-    void startExploring();
+//    void queueURL(string URL);
     
 private:
-    void exploreURL(string URL);
+    bool active;
     
+    void exploreURL(string URL, Category category);
+    
+    queue<string> nextURLs;
+    
+    VSParser *parser;
+    VSLearner *learner[4];
+    vector<VSData> data;
 };
 
 #endif /* defined(__Vasco__VSExplorer__) */

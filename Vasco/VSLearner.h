@@ -23,6 +23,8 @@ public:
     double** updateParameters();
     double getHypothesisForData(const VSData &data);
     
+    int numParams();
+    
 private:
     vector<VSData>          *_data;
     

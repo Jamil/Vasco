@@ -62,7 +62,7 @@ void VSLearner::updateUntilConvergence(float tolerance) {
     double cumulativeError = 10000;
     double previousError = 0;
     
-    while (fabs((previousError - cumulativeError)/cumulativeError) > tolerance) {
+    while (cumulativeError > tolerance) {
         previousError = cumulativeError;
         
         updateParameters();
@@ -76,3 +76,6 @@ void VSLearner::updateUntilConvergence(float tolerance) {
 
 }
 
+int VSLearner::numParams() {
+    return _M;
+}

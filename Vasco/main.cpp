@@ -17,7 +17,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    VSExplorer explorer("http://www.reddit.com/.json");
+    VSExplorer explorer("http://www.reddit.com/r/technology/.json");
     /*
     vector<const char*> dict;
 
