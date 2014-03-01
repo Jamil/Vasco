@@ -41,12 +41,12 @@ double VSLearner::_sum_err_tr(int index) {
     return error;
 }
 
-vector<float>* VSLearner::updateParameters() {
+vector<double>* VSLearner::updateParameters() {
     // Perform batch gradient descent on all training examples
     
     // Iterate through parameters
     for (int i = 0; i < _parameterValues.size(); i++) {
-        _parameterValues.at(i) += _learningRate *
+        _parameterValues.at(i) += _learningRate * _sum_err_tr(i);
     }
     
     return &_parameterValues;

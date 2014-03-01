@@ -43,8 +43,13 @@ vector<double> VSData::learningValues() const {
 }
 
 vector<double> VSData::supervisedValues() const {
-    
+    return _supervisedValues;
 }
 
-void setLearningValueAtIndex(int index, float value);
-void setLearningValues(vector<double> learningValues);
+void VSData::setLearningValueAtIndex(int index, float value) {
+    _learningValues.at(index) = value;
+}
+
+void VSData::setLearningValues(vector<double> learningValues) {
+    _learningValues = learningValues;
+}

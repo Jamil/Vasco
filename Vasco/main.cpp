@@ -12,8 +12,9 @@
 int main(int argc, const char * argv[])
 {
     char test[] = "The quick brown fox jumps over the lazy dog.";
+    vector<double> supervisedValues;
     
-    VSData *data = new VSData(test);
+    VSData *data = new VSData(test, supervisedValues);
     data->processContent();
     
     for (int i = 0; i < data->words().size(); i++) {

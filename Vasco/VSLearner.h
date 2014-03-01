@@ -15,7 +15,7 @@
 #include "VSData.h"
 
 class VSLearnerException : exception {};
-class VSLearnerExceptionNoData : VSLearnerError {
+class VSLearnerExceptionNoData : VSLearnerException {
     virtual const char* what() const throw() {
         return "No VSData passed to constructor";
     }
@@ -25,7 +25,7 @@ class VSLearner {
 public:
     VSLearner(vector<char*> &parameters, vector<VSData> *data, float learningRate);
     
-    vector<float>* updateParameters();
+    vector<double>* updateParameters();
     double getHypothesisForData(const VSData &data);
     
 private:

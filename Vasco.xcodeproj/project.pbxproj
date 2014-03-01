@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77AA83A118C146B400A0A776 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83A018C146B400A0A776 /* main.cpp */; };
+		7786FB5E18C2617C00C211BE /* VSManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B618C1477800A0A776 /* VSManager.cpp */; };
+		7786FB6018C2617C00C211BE /* VSExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B918C147A200A0A776 /* VSExplorer.cpp */; };
+		7786FB6218C2617C00C211BE /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AF18C146F400A0A776 /* VSData.cpp */; };
+		7786FB6418C2617C00C211BE /* VSParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AC18C146D300A0A776 /* VSParser.cpp */; };
+		7786FB6618C2617C00C211BE /* VSLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B318C1472200A0A776 /* VSLearner.cpp */; };
+		7786FB6818C2617C00C211BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83A018C146B400A0A776 /* main.cpp */; };
 		77AA83A318C146B400A0A776 /* Vasco.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77AA83A218C146B400A0A776 /* Vasco.1 */; };
-		77AA83AE18C146D300A0A776 /* VSParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AC18C146D300A0A776 /* VSParser.cpp */; };
-		77AA83B118C146F400A0A776 /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83AF18C146F400A0A776 /* VSData.cpp */; };
-		77AA83B518C1472200A0A776 /* VSLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B318C1472200A0A776 /* VSLearner.cpp */; };
-		77AA83B818C1477800A0A776 /* VSManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B618C1477800A0A776 /* VSManager.cpp */; };
-		77AA83BB18C147A200A0A776 /* VSExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77AA83B918C147A200A0A776 /* VSExplorer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		77AA839B18C146B400A0A776 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 				77AA83A318C146B400A0A776 /* Vasco.1 in CopyFiles */,
@@ -31,18 +31,18 @@
 
 /* Begin PBXFileReference section */
 		77AA839D18C146B400A0A776 /* Vasco */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vasco; sourceTree = BUILT_PRODUCTS_DIR; };
-		77AA83A018C146B400A0A776 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../main.cpp; sourceTree = "<group>"; };
-		77AA83A218C146B400A0A776 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Vasco.1; path = ../Vasco.1; sourceTree = "<group>"; };
-		77AA83AC18C146D300A0A776 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSParser.cpp; path = ../VSParser.cpp; sourceTree = "<group>"; };
-		77AA83AD18C146D300A0A776 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSParser.h; path = ../VSParser.h; sourceTree = "<group>"; };
-		77AA83AF18C146F400A0A776 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSData.cpp; path = ../VSData.cpp; sourceTree = "<group>"; };
-		77AA83B018C146F400A0A776 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSData.h; path = ../VSData.h; sourceTree = "<group>"; };
-		77AA83B318C1472200A0A776 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSLearner.cpp; path = ../VSLearner.cpp; sourceTree = "<group>"; };
-		77AA83B418C1472200A0A776 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSLearner.h; path = ../VSLearner.h; sourceTree = "<group>"; };
-		77AA83B618C1477800A0A776 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSManager.cpp; path = ../VSManager.cpp; sourceTree = "<group>"; };
-		77AA83B718C1477800A0A776 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSManager.h; path = ../VSManager.h; sourceTree = "<group>"; };
-		77AA83B918C147A200A0A776 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSExplorer.cpp; path = ../VSExplorer.cpp; sourceTree = "<group>"; };
-		77AA83BA18C147A200A0A776 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSExplorer.h; path = ../VSExplorer.h; sourceTree = "<group>"; };
+		77AA83A018C146B400A0A776 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		77AA83A218C146B400A0A776 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
+		77AA83AC18C146D300A0A776 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSParser.cpp; sourceTree = "<group>"; };
+		77AA83AD18C146D300A0A776 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSParser.h; sourceTree = "<group>"; };
+		77AA83AF18C146F400A0A776 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSData.cpp; sourceTree = "<group>"; };
+		77AA83B018C146F400A0A776 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSData.h; sourceTree = "<group>"; };
+		77AA83B318C1472200A0A776 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
+		77AA83B418C1472200A0A776 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
+		77AA83B618C1477800A0A776 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSManager.cpp; sourceTree = "<group>"; };
+		77AA83B718C1477800A0A776 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSManager.h; sourceTree = "<group>"; };
+		77AA83B918C147A200A0A776 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSExplorer.cpp; sourceTree = "<group>"; };
+		77AA83BA18C147A200A0A776 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSExplorer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,12 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77AA83B518C1472200A0A776 /* VSLearner.cpp in Sources */,
-				77AA83BB18C147A200A0A776 /* VSExplorer.cpp in Sources */,
-				77AA83B118C146F400A0A776 /* VSData.cpp in Sources */,
-				77AA83B818C1477800A0A776 /* VSManager.cpp in Sources */,
-				77AA83A118C146B400A0A776 /* main.cpp in Sources */,
-				77AA83AE18C146D300A0A776 /* VSParser.cpp in Sources */,
+				7786FB5E18C2617C00C211BE /* VSManager.cpp in Sources */,
+				7786FB6018C2617C00C211BE /* VSExplorer.cpp in Sources */,
+				7786FB6218C2617C00C211BE /* VSData.cpp in Sources */,
+				7786FB6418C2617C00C211BE /* VSParser.cpp in Sources */,
+				7786FB6618C2617C00C211BE /* VSLearner.cpp in Sources */,
+				7786FB6818C2617C00C211BE /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
