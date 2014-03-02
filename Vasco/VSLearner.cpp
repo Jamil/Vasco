@@ -65,15 +65,28 @@ void VSLearner::updateUntilConvergence(float tolerance) {
     while (cumulativeError > tolerance) {
         previousError = cumulativeError;
         
-        updateParameters();
-        
         cumulativeError = 0;
-        for (int i = 0; i < examples; i++) {
-            cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
-        }
-        cout << "Cumulative Error: " << cumulativeError << endl;
+        cumulativeError += fabs(_data->back().supervisedValues().at(_IDENT) - getHypothesisForData(_data->back()));
+        /*
+         for (int i = 0; i < examples; i++) {
+         cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
+         }
+         */
+        
+        if (previousError < cumulativeError)
+            break;
+        
+        cout << "Previous Error: " << previousError << endl;
+        cout << "Most Recent Error: " << cumulativeError << endl;
+        
+        updateParameters();
     }
-
+    
+    for (int i = 0; i < _M; i++) {
+        if (_parameterValues[i] != 0)
+            cout << _parameterValues[i] << " : " << _parameterNames[i] << endl;
+    }
+    
 }
 
 int VSLearner::numParams() {

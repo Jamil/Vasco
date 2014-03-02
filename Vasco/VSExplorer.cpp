@@ -39,7 +39,7 @@ VSExplorer::VSExplorer(string URL) {
     VSParser parser(dict);
     
     for (int i = 0; i < 4; i++) {
-        learner[i] = new VSLearner(dict, &data, 0.00001, i);
+        learner[i] = new VSLearner(dict, &data, 0.0000003, i);
     }
     
     string URLs[4] = {
@@ -64,7 +64,8 @@ VSExplorer::VSExplorer(string URL) {
         }
         
         int index = 0;
-        while (index != -1) {
+        int count = 0;
+        while (index != -1 && count < 3) {
             index = (int)readBuffer.find("\"url\":");
             if (index != -1) {
                 int start = index + 8;
@@ -76,6 +77,7 @@ VSExplorer::VSExplorer(string URL) {
                 
                 readBuffer = readBuffer.substr(start + len, string::npos);
             }
+            count++;
         }
     }
     
@@ -98,7 +100,7 @@ void VSExplorer::exploreURL(string URL, Category category) {
         curl_easy_cleanup(curl);
     }
     
-    vector<double> supervisedValues = {0, 0, 0, 0};
+    vector<double> supervisedValues = {-1, -1, -1, -1};
     supervisedValues[(int)category] = 1;
     
     VSData newData(strdup(readBuffer.c_str()), supervisedValues, learner[0]->numParams());
@@ -112,7 +114,7 @@ void VSExplorer::exploreURL(string URL, Category category) {
         double hyp = learner[i]->getHypothesisForData(data.back());
         cout << "Guess: " << hyp << endl;
         
-        learner[i]->updateUntilConvergence(0.1);
+        learner[i]->updateUntilConvergence(0.5);
         
         hyp = learner[i]->getHypothesisForData(data.back());
         cout << "Revised: " << hyp << endl;
