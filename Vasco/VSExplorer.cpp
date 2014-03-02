@@ -20,7 +20,7 @@ VSExplorer::VSExplorer(string URL) {
     // Initialize dictionary
     vector<const char*> dict;
     
-    ifstream in("/Users/jamildhanani/Developer/C++/Projects/Vasco/Vasco/web2");
+    ifstream in("/Users/jamildhanani/Developer/C++/Projects/Vasco/Vasco/nounlist");
     if (in.fail()) {
         cout << "ERROR" << endl;
     }
@@ -77,7 +77,7 @@ VSExplorer::VSExplorer(string URL) {
                 
                 readBuffer = readBuffer.substr(start + len, string::npos);
             }
-            //count++;
+            count++;
         }
     }
     
