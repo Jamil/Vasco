@@ -107,17 +107,19 @@ void VSExplorer::exploreURL(string URL, Category category) {
     newData.processContent();
     parser->parseData(newData);
     
-    data.push_back(newData);
-    
-    for (int i = 0; i < 4; i++) {
-        cout << "Running Learner " << i << endl;
-        double hyp = learner[i]->getHypothesisForData(data.back());
-        cout << "Guess: " << hyp << endl;
+    if (newData.words().size() > 100) {
+        data.push_back(newData);
         
-        learner[i]->updateUntilConvergence(0.5);
-        
-        hyp = learner[i]->getHypothesisForData(data.back());
-        cout << "Revised: " << hyp << endl;
+        for (int i = 0; i < 4; i++) {
+            cout << "Running Learner " << i << endl;
+            double hyp = learner[i]->getHypothesisForData(data.back());
+            cout << "Guess: " << hyp << endl;
+            
+            learner[i]->updateUntilConvergence(0.5);
+            
+            hyp = learner[i]->getHypothesisForData(data.back());
+            cout << "Revised: " << hyp << endl;
+        }
     }
 }
 
