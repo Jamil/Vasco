@@ -30,7 +30,7 @@ private:
     char*           _rawHtml;
     string          _content;
     vector<char*>   _words;
-    int             *_features; // 'Word count'
+    float           *_features; // 'Word count'
     
     /* Assigned Learning Values */
     vector<double> _learningValues;
@@ -41,7 +41,7 @@ private:
 public:
     /* Accessors */
     vector<char*>   words() const;
-    int*            features() const;
+    float*          features() const;
     const char*     content() const;
     vector<double>  learningValues() const;
     vector<double>  supervisedValues() const;
@@ -49,7 +49,7 @@ public:
     /* Mutators */
     void setLearningValueAtIndex(int index, float value);
     void setLearningValues(vector<double> learningValues);
-    void setFeaturesAtIndex(int index, int value);
+    void setFeaturesAtIndex(int index, float value);
     
 };
 

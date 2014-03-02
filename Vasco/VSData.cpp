@@ -14,7 +14,7 @@ VSData::VSData(char* __rawHtml, vector<double> &supervisedValues, int features) 
     
     _supervisedValues = supervisedValues;
     
-    _features = (int*)malloc(sizeof(int)*features);
+    _features = (float*)malloc(sizeof(float)*features);
     for (int i = 0; i < features; i++) {
         _features[i] = 0;
     }
@@ -35,7 +35,7 @@ vector<char*> VSData::words() const {
     return _words;
 }
 
-int* VSData::features() const {
+float* VSData::features() const {
     return _features;
 }
 
@@ -59,6 +59,6 @@ void VSData::setLearningValues(vector<double> learningValues) {
     _learningValues = learningValues;
 }
 
-void VSData::setFeaturesAtIndex(int index, int value) {
+void VSData::setFeaturesAtIndex(int index, float value) {
     _features[index] = value;
 }

@@ -22,10 +22,11 @@ using namespace std;
 class VSParser {
 public:
     VSParser(vector<const char*> &parameters);
+    
     void parseData(VSData &data);
     
 private:
-    unordered_map<string, int> _words;
+    unordered_map<string, float> _words;
     vector<const char*> _parameters;
 };
 

@@ -39,7 +39,7 @@ VSExplorer::VSExplorer(string URL) {
     VSParser parser(dict);
     
     for (int i = 0; i < 4; i++) {
-        learner[i] = new VSLearner(dict, &data, 0.0000003, i);
+        learner[i] = new VSLearner(dict, &data, 10, i);
     }
     
     string URLs[4] = {
@@ -77,7 +77,7 @@ VSExplorer::VSExplorer(string URL) {
                 
                 readBuffer = readBuffer.substr(start + len, string::npos);
             }
-            count++;
+            //count++;
         }
     }
     
@@ -118,5 +118,33 @@ void VSExplorer::exploreURL(string URL, Category category) {
         
         hyp = learner[i]->getHypothesisForData(data.back());
         cout << "Revised: " << hyp << endl;
+    }
+}
+
+void VSExplorer::examineURL(string URL) {
+    cout << " Exploring " << URL << endl;
+    
+    CURL *curl;
+    CURLcode res;
+    string readBuffer;
+    
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, URL.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+    }
+    
+    vector<double> supervisedValues = {0, 0, 0, 0};
+    
+    VSData newData(strdup(readBuffer.c_str()), supervisedValues, learner[0]->numParams());
+    newData.processContent();
+    parser->parseData(newData);
+    
+    for (int i = 0; i < 4; i++) {
+        double hyp = learner[i]->getHypothesisForData(newData);
+        cout << "Category " << i << ": " << hyp << endl;
     }
 }
