@@ -39,7 +39,7 @@ VSExplorer::VSExplorer(string URL) {
     VSParser parser(dict);
     
     for (int i = 0; i < 4; i++) {
-        learner[i] = new VSLearner(dict, &data, 10, i);
+        learner[i] = new VSLearner(dict, &data, 50, i);
     }
     
     string URLs[4] = {
@@ -65,7 +65,7 @@ VSExplorer::VSExplorer(string URL) {
         
         int index = 0;
         int count = 0;
-        while (index != -1 && count < 3) {
+        while (index != -1 && count < 1) {
             index = (int)readBuffer.find("\"url\":");
             if (index != -1) {
                 int start = index + 8;
