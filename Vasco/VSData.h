@@ -17,7 +17,6 @@ using namespace std;
 class VSData {
 public:
     VSData(char* _rawHtml, vector<double> &supervisedValues, int features);
-    ~VSData();
     
     void processContent();
     

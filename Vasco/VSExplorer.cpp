@@ -65,7 +65,7 @@ VSExplorer::VSExplorer(string URL) {
         
         int index = 0;
         int count = 0;
-        while (index != -1 && count < 3) {
+        while (index != -1 && count < 7) {
             index = (int)readBuffer.find("\"url\":");
             if (index != -1) {
                 int start = index + 8;

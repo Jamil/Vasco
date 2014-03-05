@@ -9,7 +9,14 @@
 #include "VSLearner.h"
 
 // Set to 0 for batch gradient descent, 1 for stochastic gradient descent
-#define STOCHASTIC 0
+#define STOCHASTIC 1
+#define STOCHASTIC_TOLERANCE 0.00001
+
+#ifdef PRINT_LOG
+#define LOG(string, ...) printf(string, __VA_ARGS__)
+#else
+#define LOG(string, ...)
+#endif
 
 #pragma mark Constructor and Destructor
 
@@ -87,12 +94,14 @@ double** VSLearner::updateParameters() {
 void VSLearner::updateUntilConvergence(float tolerance) {
     int examples = (int)_data->size();
     
-    double cumulativeError = INT_MAX; // Arbitrary really high sentinel
+    double cumulativeError = 1000; // Arbitrary really high sentinel
     double previousError = 0;
     
     if (!STOCHASTIC) {
         while (cumulativeError > tolerance) {
             previousError = cumulativeError;
+            
+            updateParameters();
             
             cumulativeError = 0;
             
@@ -101,25 +110,52 @@ void VSLearner::updateUntilConvergence(float tolerance) {
                 cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
             }
             
+            // cout << "Error: " << cumulativeError << " - previous: " << previousError << endl;
+            
             assert(cumulativeError < previousError);
         }
     }
     
     else {
-        for (int i = 0; i < _M; i++) {
+        
+        float oldParams[_M];
+        for (int i = 0; i < _M; i++)
+            oldParams[i] = _parameterValues[i];
+        bool nochange[_M];
+        for (int i = 0; i < _M; i++)
+            nochange[i] = 0;
+        
+        int finished = 0;
+        do {
+            LOG("NEW ITERATION\n", NULL);
             
-            double prevTheta = _parameterValues[i];
-            
-            for (int j = 0; j < examples; i++) {
-                double newTheta = step_stochastic(i, j);
+            // Iterate through training set
+            for (int j = 0; j < examples; j++) {
                 
-                // Check if converged
-                if (fabs(newTheta - prevTheta) < tolerance)
-                    break;
-                
-                prevTheta = newTheta;
+                // Update each parameter
+                for (int i = 0; i < _M; i++) {
+                    if (!nochange[i])
+                        step_stochastic(i, j);
+                }
             }
-        }
+            
+            // Check against old parameters
+            finished = 0;
+            for (int i = 0; i < _M; i++) {
+                double percdiff = oldParams[i] ? fabs((_parameterValues[i] - oldParams[i])/oldParams[i]) : fabs(_parameterValues[i] - oldParams[i]);
+                if (percdiff < STOCHASTIC_TOLERANCE) {
+                    //cout << "Done " << i << endl;
+                    nochange[i] = true;
+                    finished++;
+                }
+                else {
+                    LOG("Not done: %d\tDiff: %f%%\n", i, percdiff * 100);
+                }
+                oldParams[i] = _parameterValues[i];
+            }
+            
+        } while (finished < _M);
+        
     }
 }
 
