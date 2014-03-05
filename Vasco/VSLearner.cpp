@@ -131,7 +131,6 @@ void VSLearner::updateUntilConvergence(float tolerance) {
             
             // Iterate through training set
             for (int j = 0; j < examples; j++) {
-                
                 // Update each parameter
                 for (int i = 0; i < _M; i++) {
                     if (!nochange[i])

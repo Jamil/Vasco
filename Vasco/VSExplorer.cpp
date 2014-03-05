@@ -77,7 +77,7 @@ VSExplorer::VSExplorer(string URL) {
                 
                 readBuffer = readBuffer.substr(start + len, string::npos);
             }
-            count++;
+            //count++;
         }
     }
     
