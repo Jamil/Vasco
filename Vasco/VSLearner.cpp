@@ -8,7 +8,7 @@
 
 #include "VSLearner.h"
 
-// Set to 0 for batch gradient descent, 1 for stochastic
+// Set to 0 for batch gradient descent, 1 for stochastic gradient descent
 #define STOCHASTIC 0
 
 #pragma mark Constructor and Destructor
@@ -52,6 +52,7 @@ double VSLearner::getHypothesisForData(const VSData &data) {
 
 double VSLearner::step_stochastic(int i, int j) {
     // Where i is the parameter to update, j is the training example
+    // Fixed learning rate for now, but may change that later depending on performance
     _parameterValues[i] += _learningRate * (_data->at(j).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(j))) * _data->at(j).features()[i];
     
     return _parameterValues[i];
@@ -89,7 +90,6 @@ void VSLearner::updateUntilConvergence(float tolerance) {
     double cumulativeError = INT_MAX; // Arbitrary really high sentinel
     double previousError = 0;
     
-    
     if (!STOCHASTIC) {
         while (cumulativeError > tolerance) {
             previousError = cumulativeError;
@@ -107,13 +107,15 @@ void VSLearner::updateUntilConvergence(float tolerance) {
     
     else {
         for (int i = 0; i < _M; i++) {
+            
             double prevTheta = _parameterValues[i];
+            
             for (int j = 0; j < examples; i++) {
                 double newTheta = step_stochastic(i, j);
                 
                 // Check if converged
                 if (fabs(newTheta - prevTheta) < tolerance)
-                    return;
+                    break;
                 
                 prevTheta = newTheta;
             }
