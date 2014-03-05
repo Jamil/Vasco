@@ -8,6 +8,11 @@
 
 #include "VSLearner.h"
 
+// Set to 0 for batch gradient descent, 1 for stochastic
+#define STOCHASTIC 0
+
+#pragma mark Constructor and Destructor
+
 VSLearner::VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT) {
     /* You can initialize a VSLearner with no data, but you should pass an empty vector rather than NULL. The training examples should be stored OUTSIDE of the class. */
     
@@ -23,6 +28,16 @@ VSLearner::VSLearner(vector<const char*> &parameters, vector<VSData> *data, floa
         _parameterValues[i] = 0;
 }
 
+VSLearner::~VSLearner() {
+    delete _data;
+    delete _parameterValues;
+    for (int i = 0; i < _parameterNames.size(); i++) {
+        delete _parameterNames[i];
+    }
+}
+
+#pragma mark – Hypothesis
+
 double VSLearner::getHypothesisForData(const VSData &data) {
     // h_{\theta}(x) = \theta^{T}x
     
@@ -32,6 +47,17 @@ double VSLearner::getHypothesisForData(const VSData &data) {
     }
     return hyp;
 }
+
+#pragma mark - Stochastic Gradient Descent
+
+double VSLearner::step_stochastic(int i, int j) {
+    // Where i is the parameter to update, j is the training example
+    _parameterValues[i] += _learningRate * (_data->at(j).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(j))) * _data->at(j).features()[i];
+    
+    return _parameterValues[i];
+}
+
+#pragma mark - Batch Gradient Descent
 
 double VSLearner::_sum_err_tr(int index) {
     double error = 0;
@@ -47,45 +73,52 @@ double VSLearner::_sum_err_tr(int index) {
 
 double** VSLearner::updateParameters() {
     // Perform batch gradient descent on all training examples
-    
     // Iterate through parameters
     for (int i = 0; i < _M; i++) {
         _parameterValues[i] += _learningRate * _sum_err_tr(i);
-        //cout << _parameterValues[i] << endl;
     }
     
     return &_parameterValues;
 }
 
+#pragma mark - Public Functions
+
 void VSLearner::updateUntilConvergence(float tolerance) {
     int examples = (int)_data->size();
     
-    double cumulativeError = 10000;
+    double cumulativeError = INT_MAX; // Arbitrary really high sentinel
     double previousError = 0;
     
-    while (cumulativeError > tolerance) {
-        previousError = cumulativeError;
-        
-        cumulativeError = 0;
-        
-        // Take into consideration all training examples
-        for (int i = 0; i < examples; i++) {
-            cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
+    
+    if (!STOCHASTIC) {
+        while (cumulativeError > tolerance) {
+            previousError = cumulativeError;
+            
+            cumulativeError = 0;
+            
+            // Take into consideration all training examples
+            for (int i = 0; i < examples; i++) {
+                cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
+            }
+            
+            assert(cumulativeError < previousError);
         }
-        
-        assert(cumulativeError < previousError);
-        
-        //cout << "Previous Error: " << previousError << endl;
-        //cout << "Most Recent Error: " << cumulativeError << endl;
-        
-        updateParameters();
     }
-    /*
-    for (int i = 0; i < _M; i++) {
-        if (_parameterValues[i] != 0)
-            cout << _parameterValues[i] << " : " << _parameterNames[i] << endl;
+    
+    else {
+        for (int i = 0; i < _M; i++) {
+            double prevTheta = _parameterValues[i];
+            for (int j = 0; j < examples; i++) {
+                double newTheta = step_stochastic(i, j);
+                
+                // Check if converged
+                if (fabs(newTheta - prevTheta) < tolerance)
+                    return;
+                
+                prevTheta = newTheta;
+            }
+        }
     }
-    */
 }
 
 int VSLearner::numParams() {

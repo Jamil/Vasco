@@ -18,9 +18,9 @@
 class VSLearner {
 public:
     VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
+    ~VSLearner();
     
     void updateUntilConvergence(float tolerance);
-    double** updateParameters();
     double getHypothesisForData(const VSData &data);
     
     int numParams();
@@ -35,6 +35,9 @@ private:
     vector<const char*>     _parameterNames;     // Parameter names (optional)
     
     double _sum_err_tr(int index);
+    
+    double step_stochastic(int i, int j);
+    double** updateParameters();
 };
 
 #endif /* defined(__Vasco__VSLearner__) */

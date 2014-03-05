@@ -20,6 +20,14 @@ VSData::VSData(char* __rawHtml, vector<double> &supervisedValues, int features) 
     }
 }
 
+VSData::~VSData() {
+    delete _rawHtml;
+    for (int i = 0; i < _words.size(); i++) {
+        delete _words[i];
+    }
+    delete _features;
+}
+
 void VSData::processContent() {
     /* Tokenize String */
     char* content_cstr = strdup(_content.c_str());
