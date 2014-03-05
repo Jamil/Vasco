@@ -232,6 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				OTHER_CFLAGS = "-O4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -240,6 +241,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				OTHER_CFLAGS = "-O4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

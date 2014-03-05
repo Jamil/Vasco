@@ -36,6 +36,7 @@ double VSLearner::getHypothesisForData(const VSData &data) {
 double VSLearner::_sum_err_tr(int index) {
     double error = 0;
     
+    // Iterate through training examples
     // ∑(y−h(x))xj
     for (int i = 0; i < _data->size(); i++) {
         error += (_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i))) * _data->at(i).features()[index];
@@ -66,12 +67,11 @@ void VSLearner::updateUntilConvergence(float tolerance) {
         previousError = cumulativeError;
         
         cumulativeError = 0;
-        //cumulativeError += fabs(_data->back().supervisedValues().at(_IDENT) - getHypothesisForData(_data->back()));
         
+        // Take into consideration all training examples
         for (int i = 0; i < examples; i++) {
             cumulativeError += fabs(_data->at(i).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(i)));
         }
-        
         
         assert(cumulativeError < previousError);
         

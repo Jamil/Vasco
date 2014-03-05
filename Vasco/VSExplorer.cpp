@@ -20,7 +20,7 @@ VSExplorer::VSExplorer(string URL) {
     // Initialize dictionary
     vector<const char*> dict;
     
-    ifstream in("/Users/jamildhanani/Developer/C++/Projects/Vasco/Vasco/nounlist");
+    ifstream in("/Users/jamildhanani/Developer/C++/Projects/Vasco/Vasco/shortnouns");
     if (in.fail()) {
         cout << "ERROR" << endl;
     }
@@ -39,7 +39,7 @@ VSExplorer::VSExplorer(string URL) {
     VSParser parser(dict);
     
     for (int i = 0; i < 4; i++) {
-        learner[i] = new VSLearner(dict, &data, 50, i);
+        learner[i] = new VSLearner(dict, &data, 1, i);
     }
     
     string URLs[4] = {
@@ -65,7 +65,7 @@ VSExplorer::VSExplorer(string URL) {
         
         int index = 0;
         int count = 0;
-        while (index != -1 && count < 1) {
+        while (index != -1 && count < 3) {
             index = (int)readBuffer.find("\"url\":");
             if (index != -1) {
                 int start = index + 8;
@@ -131,6 +131,7 @@ void VSExplorer::examineURL(string URL) {
     string readBuffer;
     
     curl = curl_easy_init();
+    
     if(curl) {
         curl_easy_setopt(curl, CURLOPT_URL, URL.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
