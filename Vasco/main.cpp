@@ -17,7 +17,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    VSExplorer explorer("http://www.reddit.com/r/technology/.json");
+    VSExplorer explorer;
+    explorer.start();
     
     bool quit = false;
     while (!quit) {

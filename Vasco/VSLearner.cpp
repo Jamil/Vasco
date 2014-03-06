@@ -11,6 +11,7 @@
 // Set to 0 for batch gradient descent, 1 for stochastic gradient descent
 #define STOCHASTIC 1
 #define STOCHASTIC_TOLERANCE 0.00001
+#define BATCH_TOLERANCE 0.5
 
 #ifdef PRINT_LOG
 #define LOG(string, ...) printf(string, __VA_ARGS__)
@@ -91,14 +92,14 @@ double** VSLearner::updateParameters() {
 
 #pragma mark - Public Functions
 
-void VSLearner::updateUntilConvergence(float tolerance) {
+void VSLearner::updateUntilConvergence() {
     int examples = (int)_data->size();
     
     double cumulativeError = 1000; // Arbitrary really high sentinel
     double previousError = 0;
     
     if (!STOCHASTIC) {
-        while (cumulativeError > tolerance) {
+        while (cumulativeError > BATCH_TOLERANCE) {
             previousError = cumulativeError;
             
             updateParameters();

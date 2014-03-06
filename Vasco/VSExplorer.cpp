@@ -14,7 +14,8 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
     return size * nmemb;
 }
 
-VSExplorer::VSExplorer(string URL) {
+
+void VSExplorer::start() {
     active = true;
     
     // Initialize dictionary

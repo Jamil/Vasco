@@ -26,7 +26,7 @@ typedef enum category {
 
 class VSExplorer {
 public:
-    VSExplorer(string URL);
+    void start();
     void examineURL(string URL);
     
 private:

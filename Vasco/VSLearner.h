@@ -20,7 +20,7 @@ public:
     VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
     ~VSLearner();
     
-    void updateUntilConvergence(float tolerance);
+    void updateUntilConvergence();
     double getHypothesisForData(const VSData &data);
     
     int numParams();
