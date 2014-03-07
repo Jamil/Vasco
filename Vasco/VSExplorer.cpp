@@ -116,7 +116,7 @@ void VSExplorer::exploreURL(string URL, Category category) {
             double hyp = learner[i]->getHypothesisForData(data.back());
             cout << "Guess: " << hyp << endl;
             
-            learner[i]->updateUntilConvergence(0.5);
+            learner[i]->updateUntilConvergence();
             
             hyp = learner[i]->getHypothesisForData(data.back());
             cout << "Revised: " << hyp << endl;
