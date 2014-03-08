@@ -56,21 +56,19 @@ double VSLearner::getHypothesisForData(const VSData &data) {
 
 #pragma mark - Stochastic Gradient Descent
 
-double VSLearner::step_stochastic(int i, int j) {
+void VSLearner::step_stochastic(int i, int j) {
     // Where i is the parameter to update, j is the training example
     // Fixed learning rate for now, but may change that later depending on performance
-    _parameterValues[i] += _learningRate * (_data->at(j).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(j))) * _data->at(j).features()[i];
+    if (!(_data->at(j).isSupervised()))
+        return;
     
-    return _parameterValues[i];
+    _parameterValues[i] += _learningRate * (_data->at(j).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(j))) * _data->at(j).features()[i];
 }
 
 #pragma mark - Public Functions
 
 void VSLearner::updateUntilConvergence() {
     int examples = (int)_data->size();
-    
-    double cumulativeError = 1000; // Arbitrary really high sentinel
-    double previousError = 0;
     
     float oldParams[_M];
     for (int i = 0; i < _M; i++)

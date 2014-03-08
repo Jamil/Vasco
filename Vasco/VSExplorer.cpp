@@ -104,22 +104,35 @@ void VSExplorer::exploreURL(string URL, Category category) {
     vector<double> supervisedValues = {-1, -1, -1, -1};
     supervisedValues[(int)category] = 1;
     
-    VSData newData(strdup(readBuffer.c_str()), supervisedValues, learner[0]->numParams());
+    VSData newData(strdup(readBuffer.c_str()), learner[0]->numParams());
     newData.processContent();
     parser->parseData(newData);
     
     if (newData.words().size() > 100) {
-        data.push_back(newData);
+        double hyp = learner[0]->getHypothesisForData(newData);
+        bool like = hyp > 0;
+        cout << "I'm guessing you" << (like ? "'ll " : " won't ") << "like this article (" << hyp << "). Do you?" << endl;
         
-        for (int i = 0; i < 4; i++) {
-            cout << "Running Learner " << i << endl;
-            double hyp = learner[i]->getHypothesisForData(data.back());
-            cout << "Guess: " << hyp << endl;
+        char response;
+        cin >> response;
+        
+        bool update = true;
+        if (response == 'Y')
+            supervisedValues[0] = 1;
+        else if (response == 'N')
+            supervisedValues[0] = -1;
+        else
+            update = false;
+        
+        if (update) {
+            cout << supervisedValues[0] << endl;
+            newData.setSupervised(supervisedValues);
+            data.push_back(newData);
             
-            learner[i]->updateUntilConvergence();
+            learner[0]->updateUntilConvergence();
             
-            hyp = learner[i]->getHypothesisForData(data.back());
-            cout << "Revised: " << hyp << endl;
+            hyp = learner[0]->getHypothesisForData(data.back());
+            cout << "Revised (" << hyp << ")" << endl;
         }
     }
 }
@@ -141,9 +154,7 @@ void VSExplorer::examineURL(string URL) {
         curl_easy_cleanup(curl);
     }
     
-    vector<double> supervisedValues = {0, 0, 0, 0};
-    
-    VSData newData(strdup(readBuffer.c_str()), supervisedValues, learner[0]->numParams());
+    VSData newData(strdup(readBuffer.c_str()), learner[0]->numParams());
     newData.processContent();
     parser->parseData(newData);
     

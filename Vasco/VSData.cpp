@@ -8,16 +8,20 @@
 
 #include "VSData.h"
 
-VSData::VSData(char* __rawHtml, vector<double> &supervisedValues, int features) {
+VSData::VSData(char* __rawHtml, int features) {
     _rawHtml = __rawHtml;
     _content.assign(__rawHtml);
-    
-    _supervisedValues = supervisedValues;
+    supervised = false;
     
     _features = (float*)malloc(sizeof(float)*features);
     for (int i = 0; i < features; i++) {
         _features[i] = 0;
     }
+}
+
+void VSData::setSupervised(vector<double> &supervisedValues) {
+    supervised = true;
+    _supervisedValues = supervisedValues;
 }
 
 void VSData::processContent() {
@@ -61,4 +65,8 @@ void VSData::setLearningValues(vector<double> learningValues) {
 
 void VSData::setFeaturesAtIndex(int index, float value) {
     _features[index] = value;
+}
+
+bool VSData::isSupervised() const {
+    return supervised;
 }

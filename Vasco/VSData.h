@@ -16,7 +16,7 @@ using namespace std;
 
 class VSData {
 public:
-    VSData(char* _rawHtml, vector<double> &supervisedValues, int features);
+    VSData(char* _rawHtml, int features);
     
     void processContent();
     
@@ -33,10 +33,10 @@ private:
     float           *_features; // 'Word count'
     
     /* Assigned Learning Values */
-    vector<double> _learningValues;
+    vector<double>  _learningValues;
     
     /* Actual Values (if applicable) */
-    vector<double> _supervisedValues;
+    vector<double>  _supervisedValues;
     
 public:
     /* Accessors */
@@ -45,12 +45,14 @@ public:
     const char*     content() const;            // Content
     vector<double>  learningValues() const;     // Hypotheses
     vector<double>  supervisedValues() const;   // Targets
+    bool            isSupervised() const;
     
     /* Mutators */
     void setLearningValueAtIndex(int index, float value);
     void setLearningValues(vector<double> learningValues);
     void setFeaturesAtIndex(int index, float value);
     
+    void setSupervised(vector<double> &supervisedValues);
 };
 
 #endif /* defined(__Vasco__VSData__) */

@@ -36,7 +36,7 @@ private:
     
     double _sum_err_tr(int index);
     
-    double step_stochastic(int i, int j);
+    void step_stochastic(int i, int j);
     double** updateParameters();
 };
 
