@@ -110,7 +110,7 @@ void VSExplorer::exploreURL(string URL, Category category) {
     
     if (newData.words().size() > 100) {
         double hyp = learner[0]->getHypothesisForData(newData);
-        bool like = hyp > 0;
+        bool like = hyp > 0.5;
         cout << "I'm guessing you" << (like ? "'ll " : " won't ") << "like this article (" << hyp << "). Do you?" << endl;
         
         char response;
@@ -120,7 +120,7 @@ void VSExplorer::exploreURL(string URL, Category category) {
         if (response == 'Y')
             supervisedValues[0] = 1;
         else if (response == 'N')
-            supervisedValues[0] = -1;
+            supervisedValues[0] = 0;
         else
             update = false;
         

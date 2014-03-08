@@ -45,13 +45,30 @@ VSLearner::~VSLearner() {
 #pragma mark – Hypothesis
 
 double VSLearner::getHypothesisForData(const VSData &data) {
-    // h_{\theta}(x) = \theta^{T}x
+    // LOGISTIC REGRESSION
+    // h_{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}}
     
     double hyp = 0;
     for (int i = 0; i < _M; i++) {
         hyp += data.features()[i] * _parameterValues[i];
     }
+    
+    hyp = 1 + exp(-1 * hyp); // Denominator
+    hyp = 1/hyp;
+    
     return hyp;
+    
+    /*
+    LMS REGRESSION
+    h_{\theta}(x) = \theta^{T}x
+     
+        double hyp = 0;
+        for (int i = 0; i < _M; i++) {
+            hyp += data.features()[i] * _parameterValues[i];
+        }
+        return hyp;
+     
+     */
 }
 
 #pragma mark - Stochastic Gradient Descent
