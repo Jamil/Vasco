@@ -37,7 +37,7 @@ private:
     queue<string> nextURLs;
     
     VSParser *parser;
-    VSLearner *learner[4];
+    VSLearner *learner;
     vector<VSData> data;
 };
 

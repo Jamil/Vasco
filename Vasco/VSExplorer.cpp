@@ -39,9 +39,7 @@ void VSExplorer::start() {
     parser = new VSParser(dict);
     VSParser parser(dict);
     
-    for (int i = 0; i < 4; i++) {
-        learner[i] = new VSLearner(dict, &data, 1, i);
-    }
+    learner = new VSLearner(dict, &data, 1, 0);
     
     string URLs[4] = {
         "http://www.reddit.com/r/technology/.json",
@@ -104,12 +102,12 @@ void VSExplorer::exploreURL(string URL, Category category) {
     vector<double> supervisedValues = {-1, -1, -1, -1};
     supervisedValues[(int)category] = 1;
     
-    VSData newData(strdup(readBuffer.c_str()), learner[0]->numParams());
+    VSData newData(strdup(readBuffer.c_str()), learner->numParams());
     newData.processContent();
     parser->parseData(newData);
     
     if (newData.words().size() > 100) {
-        double hyp = learner[0]->getHypothesisForData(newData);
+        double hyp = learner->getHypothesisForData(newData);
         bool like = hyp > 0.5;
         cout << "I'm guessing you" << (like ? "'ll " : " won't ") << "like this article (" << hyp << "). Do you?" << endl;
         
@@ -129,9 +127,9 @@ void VSExplorer::exploreURL(string URL, Category category) {
             newData.setSupervised(supervisedValues);
             data.push_back(newData);
             
-            learner[0]->updateUntilConvergence();
+            learner->updateUntilConvergence();
             
-            hyp = learner[0]->getHypothesisForData(data.back());
+            hyp = learner->getHypothesisForData(data.back());
             cout << "Revised (" << hyp << ")" << endl;
         }
     }
@@ -154,12 +152,12 @@ void VSExplorer::examineURL(string URL) {
         curl_easy_cleanup(curl);
     }
     
-    VSData newData(strdup(readBuffer.c_str()), learner[0]->numParams());
+    VSData newData(strdup(readBuffer.c_str()), learner->numParams());
     newData.processContent();
     parser->parseData(newData);
     
     for (int i = 0; i < 4; i++) {
-        double hyp = learner[i]->getHypothesisForData(newData);
+        double hyp = learner->getHypothesisForData(newData);
         cout << "Category " << i << ": " << hyp << endl;
     }
 }
