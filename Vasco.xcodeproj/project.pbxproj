@@ -11,10 +11,7 @@
 		77A87BC118C2638E003BAFD3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC018C2638E003BAFD3 /* main.cpp */; };
 		77A87BC318C2638E003BAFD3 /* Vasco.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77A87BC218C2638E003BAFD3 /* Vasco.1 */; };
 		77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC918C263A0003BAFD3 /* VSData.cpp */; };
-		77A87BD418C263A0003BAFD3 /* VSExplorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */; };
 		77A87BD518C263A0003BAFD3 /* VSLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */; };
-		77A87BD618C263A0003BAFD3 /* VSManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BCF18C263A0003BAFD3 /* VSManager.cpp */; };
-		77A87BD718C263A0003BAFD3 /* VSParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BD118C263A0003BAFD3 /* VSParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,14 +34,8 @@
 		77A87BC218C2638E003BAFD3 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
 		77A87BC918C263A0003BAFD3 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSData.cpp; sourceTree = "<group>"; };
 		77A87BCA18C263A0003BAFD3 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSData.h; sourceTree = "<group>"; };
-		77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSExplorer.cpp; sourceTree = "<group>"; };
-		77A87BCC18C263A0003BAFD3 /* VSExplorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSExplorer.h; sourceTree = "<group>"; };
 		77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
 		77A87BCE18C263A0003BAFD3 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
-		77A87BCF18C263A0003BAFD3 /* VSManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSManager.cpp; sourceTree = "<group>"; };
-		77A87BD018C263A0003BAFD3 /* VSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSManager.h; sourceTree = "<group>"; };
-		77A87BD118C263A0003BAFD3 /* VSParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSParser.cpp; sourceTree = "<group>"; };
-		77A87BD218C263A0003BAFD3 /* VSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSParser.h; sourceTree = "<group>"; };
 		77C70C3218C26D8F00E115A2 /* web2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,14 +73,8 @@
 				77A87BC018C2638E003BAFD3 /* main.cpp */,
 				77A87BC918C263A0003BAFD3 /* VSData.cpp */,
 				77A87BCA18C263A0003BAFD3 /* VSData.h */,
-				77A87BCB18C263A0003BAFD3 /* VSExplorer.cpp */,
-				77A87BCC18C263A0003BAFD3 /* VSExplorer.h */,
 				77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */,
 				77A87BCE18C263A0003BAFD3 /* VSLearner.h */,
-				77A87BCF18C263A0003BAFD3 /* VSManager.cpp */,
-				77A87BD018C263A0003BAFD3 /* VSManager.h */,
-				77A87BD118C263A0003BAFD3 /* VSParser.cpp */,
-				77A87BD218C263A0003BAFD3 /* VSParser.h */,
 				77C70C3218C26D8F00E115A2 /* web2 */,
 				77A87BC218C2638E003BAFD3 /* Vasco.1 */,
 				77554D0718C2905400EBCB47 /* libcurl.dylib */,
@@ -150,9 +135,6 @@
 			files = (
 				77A87BD518C263A0003BAFD3 /* VSLearner.cpp in Sources */,
 				77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */,
-				77A87BD618C263A0003BAFD3 /* VSManager.cpp in Sources */,
-				77A87BD718C263A0003BAFD3 /* VSParser.cpp in Sources */,
-				77A87BD418C263A0003BAFD3 /* VSExplorer.cpp in Sources */,
 				77A87BC118C2638E003BAFD3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
