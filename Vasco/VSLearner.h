@@ -9,6 +9,12 @@
 #ifndef __Vasco__VSLearner__
 #define __Vasco__VSLearner__
 
+#ifdef PRINT_LOG
+#define LOG(string, ...) printf(string, __VA_ARGS__)
+#else
+#define LOG(string, ...)
+#endif
+
 #include <iostream>
 #include <cassert>
 #include <exception>
@@ -20,24 +26,24 @@ public:
     VSLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
     ~VSLearner();
     
-    void updateUntilConvergence();
+    void update();
     double getHypothesisForData(const VSData &data);
+    double setHypothesis(double (*hypothesis)(const VSData &data));
     
     int numParams();
     
-private:
+protected:
     vector<VSData>          *_data;
     
     float                   _learningRate;
+    
+    // If you have multiple supervised values in a VSData, _IDENT identifies  which index of supervisedValues to learn from.
     int                     _IDENT;
     int                     _M;                  // Number of parameters
     double                  *_parameterValues;   // Parameter values
     vector<const char*>     _parameterNames;     // Parameter names (optional)
     
-    double _sum_err_tr(int index);
-    
-    void step_stochastic(int i, int j);
-    double** updateParameters();
+    double (*hypothesis)(const VSData &data);
 };
 
 #endif /* defined(__Vasco__VSLearner__) */
