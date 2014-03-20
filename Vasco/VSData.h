@@ -11,25 +11,20 @@
 
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 using namespace std;
 
 class VSData {
 public:
-    VSData(char* _rawHtml, int features);
-    
-    void processContent();
+    VSData(int features);
     
 private:
     /* Metadata */
-    string _contentTitle;
-    string _url;
     bool supervised;
+    int featureCount;
     
     /* Intrinisic Data */
-    char*           _rawHtml;
-    string          _content;
-    vector<char*>   _words;
     float           *_features; // 'Word count'
     
     /* Assigned Learning Values */
@@ -40,9 +35,7 @@ private:
     
 public:
     /* Accessors */
-    vector<char*>   words() const;              // Parsed words
     float*          features() const;           // Weights for each feature
-    const char*     content() const;            // Content
     vector<double>  learningValues() const;     // Hypotheses
     vector<double>  supervisedValues() const;   // Targets
     bool            isSupervised() const;
@@ -51,7 +44,7 @@ public:
     void setLearningValueAtIndex(int index, float value);
     void setLearningValues(vector<double> learningValues);
     void setFeaturesAtIndex(int index, float value);
-    
+    void setFeatures(int num_features, float* features);
     void setSupervised(vector<double> &supervisedValues);
 };
 
