@@ -10,6 +10,12 @@
 
 #define STOCHASTIC_TOLERANCE 0.00001
 
+#pragma mark - Constructor
+
+VSStochasticLearner::VSStochasticLearner(int numParams, vector<VSData> *data, float learningRate) : VSLearner(numParams, data, learningRate) {
+    // No specific initialization needed for derived class
+}
+
 #pragma mark - Hypothesis
 
 double VSLearner::getHypothesisForData(const VSData &data) {
@@ -93,5 +99,4 @@ void VSStochasticLearner::updateUntilConvergence(float target) {
         }
         
     } while (finished < _M);
-    
 }

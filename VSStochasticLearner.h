@@ -14,8 +14,7 @@
 
 class VSStochasticLearner : public VSLearner {
 public:
-    VSStochasticLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
-    VSStochasticLearner();
+    VSStochasticLearner(int numParams, vector<VSData> *data, float learningRate);
     
     void update(float target);
     void updateUntilConvergence(float target);
