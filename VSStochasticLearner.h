@@ -10,5 +10,19 @@
 #define __Vasco__VSStochasticLearner__
 
 #include <iostream>
+#include "VSLearner.h"
+
+class VSStochasticLearner : public VSLearner {
+public:
+    VSStochasticLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
+    VSStochasticLearner();
+    
+    void update();
+    void updateUntilConvergence();
+    
+private:
+    void step_stochastic(int i, int j);
+    double** updateParameters();
+};
 
 #endif /* defined(__Vasco__VSStochasticLearner__) */

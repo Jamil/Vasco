@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77554D0818C2905400EBCB47 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77554D0718C2905400EBCB47 /* libcurl.dylib */; };
+		77739AB218DB07AC00E6BB29 /* VSStochasticLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77739AB018DB07AC00E6BB29 /* VSStochasticLearner.cpp */; };
+		77739AB518DB07B900E6BB29 /* VSBatchDescentLearner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77739AB318DB07B900E6BB29 /* VSBatchDescentLearner.cpp */; };
 		77A87BC118C2638E003BAFD3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC018C2638E003BAFD3 /* main.cpp */; };
 		77A87BC318C2638E003BAFD3 /* Vasco.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 77A87BC218C2638E003BAFD3 /* Vasco.1 */; };
 		77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A87BC918C263A0003BAFD3 /* VSData.cpp */; };
@@ -28,7 +29,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		77554D0718C2905400EBCB47 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
+		77739AB018DB07AC00E6BB29 /* VSStochasticLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSStochasticLearner.cpp; path = ../VSStochasticLearner.cpp; sourceTree = "<group>"; };
+		77739AB118DB07AC00E6BB29 /* VSStochasticLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSStochasticLearner.h; path = ../VSStochasticLearner.h; sourceTree = "<group>"; };
+		77739AB318DB07B900E6BB29 /* VSBatchDescentLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSBatchDescentLearner.cpp; path = ../VSBatchDescentLearner.cpp; sourceTree = "<group>"; };
+		77739AB418DB07B900E6BB29 /* VSBatchDescentLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSBatchDescentLearner.h; path = ../VSBatchDescentLearner.h; sourceTree = "<group>"; };
 		77A87BBD18C2638E003BAFD3 /* Vasco */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vasco; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A87BC018C2638E003BAFD3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		77A87BC218C2638E003BAFD3 /* Vasco.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Vasco.1; sourceTree = "<group>"; };
@@ -36,7 +40,6 @@
 		77A87BCA18C263A0003BAFD3 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSData.h; sourceTree = "<group>"; };
 		77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VSLearner.cpp; sourceTree = "<group>"; };
 		77A87BCE18C263A0003BAFD3 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = "<group>"; };
-		77C70C3218C26D8F00E115A2 /* web2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77554D0818C2905400EBCB47 /* libcurl.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +77,11 @@
 				77A87BCA18C263A0003BAFD3 /* VSData.h */,
 				77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */,
 				77A87BCE18C263A0003BAFD3 /* VSLearner.h */,
-				77C70C3218C26D8F00E115A2 /* web2 */,
+				77739AB018DB07AC00E6BB29 /* VSStochasticLearner.cpp */,
+				77739AB118DB07AC00E6BB29 /* VSStochasticLearner.h */,
+				77739AB318DB07B900E6BB29 /* VSBatchDescentLearner.cpp */,
+				77739AB418DB07B900E6BB29 /* VSBatchDescentLearner.h */,
 				77A87BC218C2638E003BAFD3 /* Vasco.1 */,
-				77554D0718C2905400EBCB47 /* libcurl.dylib */,
 			);
 			path = Vasco;
 			sourceTree = "<group>";
@@ -136,6 +140,8 @@
 				77A87BD518C263A0003BAFD3 /* VSLearner.cpp in Sources */,
 				77A87BD318C263A0003BAFD3 /* VSData.cpp in Sources */,
 				77A87BC118C2638E003BAFD3 /* main.cpp in Sources */,
+				77739AB518DB07B900E6BB29 /* VSBatchDescentLearner.cpp in Sources */,
+				77739AB218DB07AC00E6BB29 /* VSStochasticLearner.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
