@@ -10,20 +10,51 @@
 
 #define STOCHASTIC_TOLERANCE 0.00001
 
-void VSStochasticLearner::step_stochastic(int i, int j) {
+#pragma mark - Hypothesis
+
+double VSLearner::getHypothesisForData(const VSData &data) {
+    // LOGISTIC REGRESSION
+    // h_{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}}
+    
+    double hyp = 0;
+    for (int i = 0; i < _M; i++) {
+        hyp += data.features()[i] * _parameterValues[i];
+    }
+    
+    hyp = 1 + exp(-1 * hyp); // Denominator
+    hyp = 1/hyp;
+    
+    return hyp;
+    
+    /*
+     LMS REGRESSION
+     h_{\theta}(x) = \theta^{T}x
+     
+     double hyp = 0;
+     for (int i = 0; i < _M; i++) {
+     hyp += data.features()[i] * _parameterValues[i];
+     }
+     return hyp;
+     */
+}
+
+#pragma mark - Update Rule
+
+void VSStochasticLearner::step_stochastic(int i, int j, float target) {
     // Where i is the parameter to update, j is the training example
     // Fixed learning rate for now, but may change that later depending on performance
-    if (!(_data->at(j).isSupervised()))
-        return;
     
-    _parameterValues[i] += _learningRate * (_data->at(j).supervisedValues().at(_IDENT) - getHypothesisForData(_data->at(j))) * _data->at(j).features()[i];
+    float hypothesis = getHypothesisForData(_data->at(j));
+    float xi = _data->at(j).features()[i];
+    
+    _parameterValues[i] += _learningRate * (target - hypothesis) * xi;
 }
 
-void VSStochasticLearner::update() {
-    updateUntilConvergence();
+void VSStochasticLearner::update(float target) {
+    updateUntilConvergence(target);
 }
 
-void VSStochasticLearner::updateUntilConvergence() {
+void VSStochasticLearner::updateUntilConvergence(float target) {
     int examples = (int)_data->size();
     
     float oldParams[_M];
@@ -42,7 +73,7 @@ void VSStochasticLearner::updateUntilConvergence() {
             // Update each parameter
             for (int i = 0; i < _M; i++) {
                 if (!nochange[i])
-                    step_stochastic(i, j);
+                    step_stochastic(i, j, target);
             }
         }
         

@@ -17,11 +17,11 @@ public:
     VSStochasticLearner(vector<const char*> &parameters, vector<VSData> *data, float learningRate, int IDENT);
     VSStochasticLearner();
     
-    void update();
-    void updateUntilConvergence();
+    void update(float target);
+    void updateUntilConvergence(float target);
     
 private:
-    void step_stochastic(int i, int j);
+    void step_stochastic(int i, int j, float target);
     double** updateParameters();
 };
 
