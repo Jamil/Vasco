@@ -31,17 +31,6 @@ double VSLearner::getHypothesisForData(const VSData &data) {
     hyp = 1/hyp;
     
     return hyp;
-    
-    /*
-     LMS REGRESSION
-     h_{\theta}(x) = \theta^{T}x
-     
-     double hyp = 0;
-     for (int i = 0; i < _M; i++) {
-     hyp += data.features()[i] * _parameterValues[i];
-     }
-     return hyp;
-     */
 }
 
 #pragma mark - Update Rule

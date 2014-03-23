@@ -7,3 +7,22 @@
 //
 
 #include "VSBatchDescentLearner.h"
+
+#pragma mark - Constructor
+
+VSBatchDescentLearner::VSBatchDescentLearner(int numParams, vector<VSData> *data, float learningRate) : VSLearner(numParams, data, learningRate) {
+    // No specific initialization needed for derived class
+}
+
+#pragma mark - Hypothesis
+
+double VSLearner::getHypothesisForData(const VSData &data) {
+    // LMS REGRESSION
+    // h_{\theta}(x) = \theta^{T}x
+    
+    double hyp = 0;
+    for (int i = 0; i < _M; i++) {
+        hyp += data.features()[i] * _parameterValues[i];
+    }
+    return hyp;
+}
