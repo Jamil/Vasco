@@ -14,25 +14,15 @@ public:
     ~VSData();
     
 private:
-    /* Metadata */
-    bool supervised;
-    int featureCount;
+    int featureCount; // Number of features
     
-    /* Intrinisic Data (each theta_{i}) */
-    float          *_features; // 'Word count'
-    
-    /* Assigned Learning Values/Weights (each x_{i}) */
-    float          *_learningValues;
+    float *_features; // Parameters; i.e., each theta_{i}
     
 public:
     /* Accessors */
-    float*          features() const;
-    float*          learningValues() const;
-    bool            isSupervised() const;
+    float* features() const;
     
     /* Mutators */
-    void setLearningValueAtIndex(int index, float value);
-    void setLearningValues(int num_values, float* learningValues);
     void setFeaturesAtIndex(int index, float value);
     void setFeatures(int num_features, float* features);
 };
