@@ -8,6 +8,8 @@
 
 #include "VSBatchDescentLearner.h"
 
+#define BATCH_TOLERANCE 0.001
+
 #pragma mark - Constructor
 
 VSBatchDescentLearner::VSBatchDescentLearner(int numParams, vector<VSData> *data, float learningRate) : VSLearner(numParams, data, learningRate) {
@@ -25,4 +27,13 @@ double VSLearner::getHypothesisForData(const VSData &data) {
         hyp += data.features()[i] * _parameterValues[i];
     }
     return hyp;
+}
+
+#pragma mark - Update Rule
+
+void VSBatchDescentLearner::updateUntilConvergence(float target) {
+    float error = 0;
+    do {
+        
+    } while (error > BATCH_TOLERANCE);
 }
