@@ -16,6 +16,10 @@ VSBatchDescentLearner::VSBatchDescentLearner(int numParams, vector<VSData> *data
     // No specific initialization needed for derived class
 }
 
+void VSBatchDescentLearner::update(float target) {
+    updateUntilConvergence(target);
+}
+
 #pragma mark - Hypothesis
 
 double VSLearner::getHypothesisForData(const VSData &data) {

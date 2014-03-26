@@ -9,7 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "VSLearner.h"
+#include "VSStochasticLearner.cpp"
 
 using namespace std;
 

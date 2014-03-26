@@ -38,7 +38,7 @@
 		77A87BC918C263A0003BAFD3 /* VSData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSData.cpp; path = ../VSData.cpp; sourceTree = "<group>"; };
 		77A87BCA18C263A0003BAFD3 /* VSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSData.h; path = ../VSData.h; sourceTree = "<group>"; };
 		77A87BCD18C263A0003BAFD3 /* VSLearner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VSLearner.cpp; path = ../VSLearner.cpp; sourceTree = "<group>"; };
-		77A87BCE18C263A0003BAFD3 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VSLearner.h; path = ../VSLearner.h; sourceTree = "<group>"; };
+		77A87BCE18C263A0003BAFD3 /* VSLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSLearner.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
