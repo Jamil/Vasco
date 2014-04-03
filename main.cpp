@@ -9,7 +9,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "VSStochasticLearner.cpp"
 
 using namespace std;
 

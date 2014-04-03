@@ -18,7 +18,7 @@ VSStochasticLearner::VSStochasticLearner(int numParams, vector<VSData> *data, fl
 
 #pragma mark - Hypothesis
 
-double VSLearner::getHypothesisForData(const VSData &data) {
+double VSStochasticLearner::getHypothesisForData(const VSData &data) {
     // LOGISTIC REGRESSION
     // h_{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}}
     

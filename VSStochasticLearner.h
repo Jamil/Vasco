@@ -18,7 +18,8 @@ public:
     
     void update(float target);
     void updateUntilConvergence(float target);
-    
+    double getHypothesisForData(const VSData &data);
+
 private:
     void step_stochastic(int i, int j, float target);
     double** updateParameters();

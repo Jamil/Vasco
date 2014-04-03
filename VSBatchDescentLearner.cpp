@@ -22,7 +22,7 @@ void VSBatchDescentLearner::update(float target) {
 
 #pragma mark - Hypothesis
 
-double VSLearner::getHypothesisForData(const VSData &data) {
+double VSBatchDescentLearner::getHypothesisForData(const VSData &data) {
     // LMS REGRESSION
     // h_{\theta}(x) = \theta^{T}x
     
