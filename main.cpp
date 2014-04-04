@@ -14,6 +14,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+    vector<VSData> data;
+
     return 0;
 }
 

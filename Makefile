@@ -1,7 +1,13 @@
+EXEC = vasco 
+CC = g++
+OBJ = main.o VSData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o
+CFLAGS = -Werror
+LDFLAGS = 
+
 all: vasco
 
-vasco: main.o VSData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o
-	g++ main.o VSData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o -o vasco
+vasco: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(EXEC)
 
 main.o:
 	g++ -c main.cpp -o main.o
@@ -19,4 +25,5 @@ VSStochasticLearner.o:
 	g++ -c VSStochasticLearner.cpp -o VSStochasticLearner.o
 
 clean:
-	rm -f *.o
+	rm -f *.o 
+	rm vasco
