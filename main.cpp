@@ -1,21 +1,29 @@
-//
-//  main.cpp
-//  Vasco
-//
-//  Created by Jamil Dhanani on 3/1/2014.
-//  Copyright (c) 2014 Jamil Dhanani. All rights reserved.
-//
-
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include "VSData.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    vector<VSData> data;
+  // Initialize sample training set
+  const int set_size = 10;
+  const int num_features = 3;
+  float features[] = {1,2,3};
 
-    return 0;
+  vector<VSData*> data;
+  
+  for (int i = 0; i < set_size; i++) {
+    VSData *newData = new VSData(num_features);
+    newData->setFeatures(num_features, features);
+    data.push_back(newData);
+  }
+
+  for (int i = 0; i < set_size; i++) {
+    delete data[i];
+  }
+  return 0;
 }
 

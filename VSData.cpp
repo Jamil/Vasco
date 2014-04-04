@@ -13,7 +13,7 @@ VSData::VSData(int features) {
 }
 
 VSData::~VSData() {
-    free(_features);
+  free(_features);
 }
 
 #pragma mark - Setters

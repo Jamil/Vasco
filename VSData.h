@@ -15,7 +15,6 @@ public:
     
 private:
     int featureCount; // Number of features
-    
     float *_features; // Parameters; i.e., each theta_{i}
     
 public:

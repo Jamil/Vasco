@@ -16,16 +16,16 @@
 
 class VSLearner {
 public:
-    VSLearner(int numParams, vector<VSData> *data, float learningRate);
+    VSLearner(int numParams, vector<VSData*> data, float learningRate);
     ~VSLearner();
     
     virtual void update(float target) = 0;
-    virtual double getHypothesisForData(const VSData &data) = 0;
+    virtual double getHypothesisForData(const VSData* data) = 0;
     
     int numParams();
     
 protected:
-    vector<VSData>          *_data;
+    vector<VSData*>         _data;
     
     float                   _learningRate;
     

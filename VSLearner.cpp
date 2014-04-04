@@ -5,7 +5,7 @@
 
 #pragma mark - Constructor and Destructor
 
-VSLearner::VSLearner(int numParams, vector<VSData> *data, float learningRate) {
+VSLearner::VSLearner(int numParams, vector<VSData*> data, float learningRate) {
     /* You can initialize a VSLearner with no data, but you should pass an empty vector rather than NULL. The training examples should be stored OUTSIDE of the class. */
     
     _learningRate = learningRate;

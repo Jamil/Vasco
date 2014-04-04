@@ -14,11 +14,11 @@
 
 class VSStochasticLearner : public VSLearner {
 public:
-    VSStochasticLearner(int numParams, vector<VSData> *data, float learningRate);
+    VSStochasticLearner(int numParams, vector<VSData*> data, float learningRate);
     
     void update(float target);
     void updateUntilConvergence(float target);
-    double getHypothesisForData(const VSData &data);
+    double getHypothesisForData(VSData* data);
 
 private:
     void step_stochastic(int i, int j, float target);
