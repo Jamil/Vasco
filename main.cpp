@@ -22,12 +22,12 @@ int main(int argc, const char * argv[])
     data.push_back(newData);
   }
 
-  VSStochasticLearner learner(3, data, 0.0001);
-  learner.updateUntilConvergence(4);
+  VSStochasticLearner learner(3, data, 0.00001);
+  learner.update(1);
 
   for (int i = 0; i < set_size; i++) {
     cout << "Hypothesis for Training Example " << i << ": ";
-    int hyp = learner.getHypothesisForData(data[i]);
+    double hyp = learner.getHypothesisForData(data[i]);
     cout << hyp << endl;
   }
 

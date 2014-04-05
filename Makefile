@@ -7,7 +7,7 @@ LDFLAGS =
 
 all: vasco
 
-vasco: $(OBJ)
+vasco: $(OBJ) $(SRC)
 	$(CC) $(CFLAGS) $(OBJ) $(SRC) -o $(EXEC)
 
 VSData.o: VSData.cpp 
@@ -24,4 +24,4 @@ VSStochasticLearner.o: VSStochasticLearner.cpp
 
 clean:
 	rm -f *.o 
-	rm vasco main
+	rm vasco 
