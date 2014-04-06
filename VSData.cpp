@@ -12,6 +12,13 @@ VSData::VSData(int features) {
     }
 }
 
+VSData::VSData(int feature_count, float* features) {
+  featureCount = feature_count;
+  _features = (float*)malloc(sizeof(float)*feature_count);
+  for (int i = 0; i < feature_count; i++)
+    _features[i] = features[i];
+}
+
 VSData::~VSData() {
   free(_features);
 }

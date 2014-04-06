@@ -27,8 +27,12 @@ double VSStochasticLearner::getHypothesisForData(VSData *data) {
     hyp += data->features()[i] * _parameterValues[i];
   }
 
-  hyp = 1 + exp(-1 * hyp); // Denominator
-  hyp = 1/hyp;
+  if (_hypothesis)
+    hyp = _hypothesis(hyp);
+  else { // Assume sigmoid function if no activation function found
+    hyp = 1 + exp(-1 * hyp); // Denominator
+    hyp = 1/hyp;
+  }
 
   return hyp;
 }

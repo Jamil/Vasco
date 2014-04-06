@@ -16,6 +16,21 @@ VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learni
     _parameterValues = (double*)malloc(sizeof(double) * _M);
     for (int i = 0; i < _M; i++)
         _parameterValues[i] = 0;
+
+    _hypothesis = NULL;
+}
+
+VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y)) {
+    _learningRate = learningRate;
+    _data = data;
+    
+    // Initialize x_{i} values to the zero vector
+    _M = numParams;
+    _parameterValues = (double*)malloc(sizeof(double) * _M);
+    for (int i = 0; i < _M; i++)
+        _parameterValues[i] = 0;
+
+    _hypothesis = hypothesis;
 }
 
 VSLearner::~VSLearner() {

@@ -11,6 +11,7 @@ class VSSupervisedData : public VSData {
 public:
   // Constructor 
   VSSupervisedData(int featureCount);
+  VSSupervisedData(int featureCount, float* features, float supervisedValue);
 
   // Accessors
   void setSupervisedValue(float supervisedValue);

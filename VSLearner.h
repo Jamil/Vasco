@@ -19,6 +19,7 @@
 class VSLearner {
 public:
     VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
+    VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y));
     ~VSLearner();
     
     virtual void update() = 0;
@@ -28,9 +29,10 @@ public:
     
 protected:
     vector<VSSupervisedData*> _data;
+
+    float (*_hypothesis)(float y);
     
     float _learningRate;
-    
     int _M;                     // Number of parameters
     double *_parameterValues;   // Parameter values
 };
