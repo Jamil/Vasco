@@ -12,7 +12,7 @@
 
 #pragma mark - Constructor
 
-VSBatchDescentLearner::VSBatchDescentLearner(int numParams, vector<VSData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
+VSBatchDescentLearner::VSBatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
     // No specific initialization needed for derived class
 }
 

@@ -12,7 +12,7 @@
 
 #pragma mark - Constructor
 
-VSStochasticLearner::VSStochasticLearner(int numParams, vector<VSData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
+VSStochasticLearner::VSStochasticLearner(int numParams, vector<VSSupervisedData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
   // No specific initialization needed for derived class
 }
 
@@ -47,11 +47,11 @@ void VSStochasticLearner::step_stochastic(int i, int j, float target) {
   _parameterValues[i] += _learningRate * (target - hypothesis) * xi;
 }
 
-void VSStochasticLearner::update(float target) {
-  updateUntilConvergence(target);
+void VSStochasticLearner::update() {
+  updateUntilConvergence();
 }
 
-void VSStochasticLearner::updateUntilConvergence(float target) {
+void VSStochasticLearner::updateUntilConvergence() {
   int examples = (int)_data.size();
 
   float oldParams[_M];
@@ -67,6 +67,8 @@ void VSStochasticLearner::updateUntilConvergence(float target) {
 
     // Iterate through training set
     for (int j = 0; j < examples; j++) {
+      VSSupervisedData *example = _data.at(j);
+      float target = example->supervisedValue();
       // Update each parameter
       for (int i = 0; i < _M; i++) {
         if (!nochange[i])

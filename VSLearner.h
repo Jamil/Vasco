@@ -14,25 +14,25 @@
 #include <cassert>
 #include <exception>
 #include <cmath>
-#include "VSData.h"
+#include "VSSupervisedData.h"
 
 class VSLearner {
 public:
-    VSLearner(int numParams, vector<VSData*> data, float learningRate);
+    VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
     ~VSLearner();
     
-    virtual void update(float target) = 0;
+    virtual void update() = 0;
     virtual double getHypothesisForData(VSData* data) = 0;
-    
+
     int numParams();
     
 protected:
-    vector<VSData*>         _data;
+    vector<VSSupervisedData*> _data;
     
-    float                   _learningRate;
+    float _learningRate;
     
-    int                     _M;                  // Number of parameters
-    double                  *_parameterValues;   // Parameter values
+    int _M;                     // Number of parameters
+    double *_parameterValues;   // Parameter values
 };
 
 #endif /* defined(__Vasco__VSLearner__) */

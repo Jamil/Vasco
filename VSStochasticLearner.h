@@ -14,10 +14,10 @@
 
 class VSStochasticLearner : public VSLearner {
 public:
-    VSStochasticLearner(int numParams, vector<VSData*> data, float learningRate);
+    VSStochasticLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
     
-    void update(float target);
-    void updateUntilConvergence(float target);
+    void update();
+    void updateUntilConvergence();
     double getHypothesisForData(VSData* data);
 
 private:
@@ -25,4 +25,4 @@ private:
     double** updateParameters();
 };
 
-#endif /* defined(__Vasco__VSStochasticLearner__) */
+#endif

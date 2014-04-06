@@ -13,17 +13,16 @@ public:
     VSData(int features);
     ~VSData();
     
-private:
-    int featureCount; // Number of features
-    float *_features; // Parameters; i.e., each theta_{i}
-    
-public:
     /* Accessors */
     float* features() const;
     
     /* Mutators */
     void setFeaturesAtIndex(int index, float value);
     void setFeatures(int num_features, float* features);
+    
+protected:
+    int featureCount; // Number of features
+    float *_features; // Parameters; i.e., each theta_{i}
 };
 
 #endif /* defined(__Vasco__VSData__) */

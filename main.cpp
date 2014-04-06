@@ -14,16 +14,17 @@ int main(int argc, const char * argv[])
   const int num_features = 3;
   float features[] = {1,2,3};
 
-  vector<VSData*> data;
+  vector<VSSupervisedData*> data;
   
   for (int i = 0; i < set_size; i++) {
-    VSData *newData = new VSData(num_features);
+    VSSupervisedData *newData = new VSSupervisedData(num_features);
     newData->setFeatures(num_features, features);
+    newData->setSupervisedValue((float)1/(i+1));
     data.push_back(newData);
   }
 
   VSStochasticLearner learner(3, data, 0.00001);
-  learner.update(1);
+  learner.update();
 
   for (int i = 0; i < set_size; i++) {
     cout << "Hypothesis for Training Example " << i << ": ";
