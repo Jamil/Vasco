@@ -15,11 +15,12 @@
 class VSBatchDescentLearner : public VSLearner {
 public:
     VSBatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
+    VSBatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y));
     
-    void update(float target);
-    void updateUntilConvergence(float target);
+    void update();
+    void updateUntilConvergence();
 
-    double getHypothesisForData(const VSData* data);   
+    double getHypothesisForData(VSData* data);   
 private:
     double** updateParameters();
 };

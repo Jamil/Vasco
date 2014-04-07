@@ -26,6 +26,7 @@ public:
     virtual double getHypothesisForData(VSData* data) = 0;
 
     int numParams();
+    double* params();
     
 protected:
     vector<VSSupervisedData*> _data;

@@ -42,3 +42,7 @@ VSLearner::~VSLearner() {
 int VSLearner::numParams() {
     return _M;
 }
+
+double* VSLearner::params() {
+  return _parameterValues;
+}
