@@ -12,6 +12,7 @@ class VSData {
 public:
     VSData(int features);
     VSData(int feature_count, float* features);
+    VSData(const VSData &oth); // cctor
     ~VSData();
     
     /* Accessors */

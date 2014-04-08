@@ -19,6 +19,13 @@ VSData::VSData(int feature_count, float* features) {
     _features[i] = features[i];
 }
 
+VSData::VSData(const VSData &oth) {
+  this->featureCount = oth.featureCount;
+  this->_features = (float*)malloc(sizeof(float)*oth.featureCount);
+  for (int i = 0; i < this->featureCount; i++)
+    this->_features[i] = oth._features[i];
+}
+
 VSData::~VSData() {
   free(_features);
 }
