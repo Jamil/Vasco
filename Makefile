@@ -1,7 +1,7 @@
 EXEC = vasco 
 CC = g++
 SRC = main.cpp 
-OBJ = VSData.o VSSupervisedData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o
+OBJ = VSData.o VSSupervisedData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o VSCluster.o
 CFLAGS = -Werror -g -ggdb
 LDFLAGS = 
 
@@ -24,6 +24,9 @@ VSBatchDescentLearner.o: VSBatchDescentLearner.cpp VSBatchDescentLearner.h
 
 VSStochasticLearner.o: VSStochasticLearner.cpp VSStochasticLearner.h
 	$(CC) $(CFLAGS) -c VSStochasticLearner.cpp -o VSStochasticLearner.o
+
+VSCluster.o: VSCluster.cpp VSCluster.h
+	$(CC) $(CFLAGS) -c VSCluster.cpp -o VSCluster.o
 
 clean:
 	rm -f *.o 

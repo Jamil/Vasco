@@ -15,6 +15,7 @@ private:
   int _k;                             // Number of centroids ("k")
 
   void updateUntilConvergence();
-  void step();
-  void distance(const VSData* a, const VSData* b); 
+  bool step();
+  double distance(VSData* a, VSData* b); 
+  void updateCentroids();
 };

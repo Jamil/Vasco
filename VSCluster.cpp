@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 #include "VSCluster.h"
 
 VSCluster::VSCluster(int k, vector<VSData*> data) {
@@ -21,7 +22,7 @@ void VSCluster::update() {
   updateUntilConvergence();
 }
 
-double VSCluster::distance(const VSData* a, const VSData* b) {
+double VSCluster::distance(VSData* a, VSData* b) {
   int n = a->size();
   int m = b->size();
 
@@ -36,26 +37,31 @@ double VSCluster::distance(const VSData* a, const VSData* b) {
     diff *= diff;
     result += diff;
   }
-  
+
   return sqrt(result);
 }
 
-void VSCluster::step() {
+bool VSCluster::step() {
   int set_size = _data.size();
   for (int i = 0; i < set_size; i++) {
-    double minDist = +inf;
+    double minDist = 10000000; // Large number; need to fix
     vector<VSData*> *closestCluster;
 
     for (int j = 0; j < _k; j++) {
       double dist = distance(_data.at(i), _centroids[j]);
       if (dist < minDist) {
         minDist = dist;
-        closestCluster = _clusters[j];
+        closestCluster = &_clusters[j];
       }
     }
     // add to closest cluster
     closestCluster->push_back(_data.at(i));
   }
+
+  return true; // return false if no change
+}
+
+void VSCluster::updateCentroids() {
 }
 
 void VSCluster::updateUntilConvergence() {
