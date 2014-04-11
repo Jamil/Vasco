@@ -5,6 +5,7 @@
 #include "VSData.h"
 #include "VSStochasticLearner.h"
 #include "VSBatchDescentLearner.h"
+#include "VSCluster.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ int main(int argc, const char * argv[])
     data.push_back(newData);
   }
 
-  VSBatchDescentLearner learner(3, data, 0.001);
+  VSCluster learner(3, data, 0.001);
   learner.update();
 
   double* params = learner.params();

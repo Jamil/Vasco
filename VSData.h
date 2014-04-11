@@ -17,7 +17,8 @@ public:
     
     /* Accessors */
     float* features() const;
-    
+    int size();
+
     /* Mutators */
     void setFeaturesAtIndex(int index, float value);
     void setFeatures(int num_features, float* features);

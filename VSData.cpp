@@ -51,3 +51,7 @@ void VSData::setFeaturesAtIndex(int index, float value) {
 float* VSData::features() const {
     return _features;
 }
+
+int VSData::size() {
+  return featureCount;
+}
