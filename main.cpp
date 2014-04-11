@@ -16,22 +16,25 @@ int main(int argc, const char * argv[])
   const int num_features = 3;
   float features[] = {1,2,3};
 
-  vector<VSSupervisedData*> data;
+  vector<VSData*> data;
   
   for (int i = 0; i < set_size; i++) {
     VSSupervisedData *newData = new VSSupervisedData(num_features);
+    for (int j = 0; j < 3; j++)
+      features[j] += i;
     newData->setFeatures(num_features, features);
-    newData->setSupervisedValue((float)1/(i+1));
     data.push_back(newData);
   }
 
-  VSCluster learner(3, data, 0.001);
+  VSCluster learner(3, data);
   learner.update();
 
+  /*
   double* params = learner.params();
   for (int i = 0; i < learner.numParams(); i++) {
     cout << "Parameter " << i << ": " << params[i] << endl;
   }
+  */
 
   for (int i = 0; i < set_size; i++) {
     delete data[i];

@@ -14,7 +14,7 @@ private:
   vector<VSData*> *_clusters_prev;    // Previous state
   int _k;                             // Number of centroids ("k")
 
-  void VSCluster::updateUntilConvergence();
-  void VSCluster::step();
+  void updateUntilConvergence();
+  void step();
   void distance(const VSData* a, const VSData* b); 
-}
+};
