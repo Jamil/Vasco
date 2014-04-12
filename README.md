@@ -5,8 +5,10 @@ Small machine learning library in C++ (a work very much in progress).
 
 Some background to the theory at http://blog.jamild.com/post/77023959349/from-the-hessian-to-widrow-hoff-calculus-and-machine
 
-## Usage (Stochastic and Batch Gradient Descent)
-
+## Usage (Stochastic and Batch Gradient Descent)  
+  
+tl;dr: VSSupervisedData is your training example, the VSLearner subclasses are the model.   
+  
 First initialize a vector of type __VSSupervisedData*__. This will be your training set.
 
 For each training example, initialize a __VSSupervisedData__ instance dynamically with the desired number of features (this number should be consistent among one set):  
