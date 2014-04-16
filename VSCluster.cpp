@@ -46,15 +46,21 @@ bool VSCluster::step() {
   int set_size = _data.size();
   
   // Copy current state to previous state
+  LOG("New Iteration\n", NULL);
   for (int i = 0; i < _k; i++) {
     _clusters_prev[i].clear();
     int vecSize = _clusters[i].size();
+    int count = 0;
     for (int j = 0; j < vecSize; j++) {
       _clusters_prev[i].push_back(_clusters[i].at(j));
+      count++;
     }
+    LOG("Cluster %d : %d\n", i, count);
   }
-  
+  LOG("\n", NULL);
+
   for (int i = 0; i < set_size; i++) {
+    _clusters[i].clear();
     double minDist = 10000000; // Large number; need to fix
     vector<VSData*> *closestCluster;
 
@@ -87,6 +93,31 @@ bool VSCluster::step() {
 }
 
 void VSCluster::updateCentroids() {
+  // Examine first training example to get feature count, etc 
+  if (!_data.size())
+    return;
+
+  int featureCount = _data.at(0)->size();
+
+  // O(scary)
+  for (int i = 0; i < _k; i++) {
+    int clusterSize = _clusters[i].size();
+    float sums[featureCount];
+    memset(sums, 0, sizeof(sums));
+    for (int j = 0; j < clusterSize; j++) {
+      VSData *currentData = _clusters[i].at(j);
+      float *currentFeatures = currentData->features();
+      for (int n = 0; n < featureCount; n++) {
+        sums[n] += currentFeatures[n];
+      }
+    }
+    for (int j = 0; j < featureCount; j++) {
+      sums[j] /= clusterSize;
+    }
+    if (_centroids[i])
+      delete _centroids[i];
+    _centroids[i] = new VSData(featureCount, sums);
+  }
 }
 
 void VSCluster::updateUntilConvergence() {

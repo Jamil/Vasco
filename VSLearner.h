@@ -2,14 +2,6 @@
 #ifndef __Vasco__VSLearner__
 #define __Vasco__VSLearner__
 
-#define PRINT_LOG
-
-#ifdef PRINT_LOG
-#define LOG(string, ...) printf(string, __VA_ARGS__)
-#else
-#define LOG(string, ...)
-#endif
-
 #include <iostream>
 #include <cassert>
 #include <exception>
