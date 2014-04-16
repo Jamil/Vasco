@@ -59,8 +59,11 @@ bool VSCluster::step() {
   }
   LOG("\n", NULL);
 
-  for (int i = 0; i < set_size; i++) {
+  for (int i = 0; i < _k; i++) {
     _clusters[i].clear();
+  }
+
+  for (int i = 0; i < set_size; i++) {
     double minDist = 10000000; // Large number; need to fix
     vector<VSData*> *closestCluster;
 
