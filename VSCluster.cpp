@@ -47,6 +47,16 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
   }
 }
 
+VSCluster::~VSCluster() {
+  for (int i = 0; i < _k; i++) {
+    if (_centroids[i])
+      delete _centroids[i];
+  }
+  delete [] _centroids;
+  delete [] _clusters;
+  delete [] _clusters_prev;
+}
+
 void VSCluster::update() {
   updateUntilConvergence();
 }

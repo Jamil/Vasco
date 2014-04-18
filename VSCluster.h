@@ -5,6 +5,7 @@
 class VSCluster {
 public:
   VSCluster(int k, vector<VSData*> data);
+  ~VSCluster();
   void update();
 
 private:
