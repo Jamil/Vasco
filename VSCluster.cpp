@@ -55,10 +55,6 @@ double VSCluster::distance(VSData* a, VSData* b) {
   int n = a->size();
   int m = b->size();
 
-  if (m != n) {
-    // break here
-  }
-
   assert(m == n);
 
   float* aFeatures = a->features();
