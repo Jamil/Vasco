@@ -112,7 +112,6 @@ bool VSCluster::step() {
 
     for (int j = 0; j < _k; j++) {
       double dist = distance(_data.at(i), _centroids[j]);
-      LOG("Centroid %d, Distance: %f\n", j, dist);
       if (dist < minDist) {
         minDist = dist;
         closestCluster = &_clusters[j];
