@@ -11,6 +11,9 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
   _clusters = new vector<VSData*>[k];
   _clusters_prev = new vector<VSData*>[k];
 
+  // Number of clusters must be less than size of training set
+  assert(k <= data.size());
+
   // Initialize centroids
   srand(time(NULL));
   
