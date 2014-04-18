@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <float.h>
 #include "VSData.h"
 
 class VSCluster {
