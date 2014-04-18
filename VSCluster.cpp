@@ -106,9 +106,9 @@ bool VSCluster::step() {
   }
 
   for (int i = 0; i < set_size; i++) {
-    double minDist = 10000000; // Large number; need to fix
     vector<VSData*> *closestCluster;
     int cc = -1;
+    double minDist = DBL_MAX;
 
     for (int j = 0; j < _k; j++) {
       double dist = distance(_data.at(i), _centroids[j]);
