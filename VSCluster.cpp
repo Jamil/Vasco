@@ -13,9 +13,34 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
 
   // Initialize centroids
   srand(time(NULL));
+  
+  int chosen[k]; // Make sure we don't initialize two centroids to the same value 
+  memset(chosen, -1, k); // Set all to -1 (0xFFFFFFFF)
+
   for (int i = 0; i < _k; i++) {
+    bool duplicate = true;
     int index = rand() % _data.size();
-    _centroids[i] = _data.at(index);
+    
+    do {
+      duplicate = false;
+      for (int j = 0; j < i; j++)
+        if (chosen[j] == index) {
+          duplicate = true;
+          index = rand() % _data.size();
+      }
+    } while (duplicate);
+
+    chosen[i] = index;
+
+    float* features = _data.at(index)->features();
+    int size = _data.at(index)->size();
+    
+    LOG("Initializing cluster %d to:\n", i);
+    for (int j = 0; j < size; j++)
+      LOG("\t%d:%f", j, features[j]);
+    LOG("\n", NULL);
+
+    _centroids[i] = new VSData(size, features);
   }
 }
 
@@ -26,6 +51,10 @@ void VSCluster::update() {
 double VSCluster::distance(VSData* a, VSData* b) {
   int n = a->size();
   int m = b->size();
+
+  if (m != n) {
+    // break here
+  }
 
   assert(m == n);
 
@@ -66,14 +95,19 @@ bool VSCluster::step() {
   for (int i = 0; i < set_size; i++) {
     double minDist = 10000000; // Large number; need to fix
     vector<VSData*> *closestCluster;
+    int cc = -1;
 
     for (int j = 0; j < _k; j++) {
       double dist = distance(_data.at(i), _centroids[j]);
+      LOG("Centroid %d, Distance: %f\n", j, dist);
       if (dist < minDist) {
         minDist = dist;
         closestCluster = &_clusters[j];
+        cc = j;
       }
     }
+
+    LOG("Adding data at %d to cluster %d\n", i, cc);
     // add to closest cluster
     closestCluster->push_back(_data.at(i));
   }
@@ -129,5 +163,13 @@ void VSCluster::updateUntilConvergence() {
     converged = step();         // Assign clusters 
     updateCentroids();
   } while (!converged);
+  
+  int size = _centroids[0]->size();
+  LOG("Converged;\n", NULL);
+  for (int i = 0; i < _k; i++) {
+    for (int j = 0; j < size; j++)
+      LOG("\t%d:%f", j, _centroids[i]->features()[j]);
+    LOG("\n", NULL);
+  }
 }
 
