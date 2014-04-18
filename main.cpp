@@ -12,17 +12,17 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
   // Initialize sample training set
-  const int set_size = 10;
+  const int set_size = 9;
   const int num_features = 3;
-  float features[] = {1,2,3};
+  
+  // Distinctly can be separated into three groups; near origin, on x-axis, on y-axis
+  float features[9][3] = {{0,0,0}, {12,0,0}, {1,0,1}, {17,-2,-3}, {0,11,1}, {1,12,3}, {15,2,1}, {0,1,2}, {1,7,-1}};
 
   vector<VSData*> data;
   
   for (int i = 0; i < set_size; i++) {
     VSSupervisedData *newData = new VSSupervisedData(num_features);
-    for (int j = 0; j < 3; j++)
-      features[j] += i;
-    newData->setFeatures(num_features, features);
+    newData->setFeatures(num_features, features[i]);
     data.push_back(newData);
   }
 
