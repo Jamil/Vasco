@@ -115,7 +115,6 @@ bool VSCluster::step() {
       }
     }
 
-    LOG("Adding data at %d to cluster %d\n", i, cc);
     // add to closest cluster
     closestCluster->push_back(_data.at(i));
   }
