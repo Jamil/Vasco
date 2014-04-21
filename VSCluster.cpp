@@ -22,8 +22,8 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
 
   for (int i = 0; i < _k; i++) {
     bool duplicate = true;
-    int index = rand() % _data.size();
     
+    int index = rand() % _data.size();
     do {
       duplicate = false;
       for (int j = 0; j < i; j++)
@@ -37,13 +37,12 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
 
     float* features = _data.at(index)->features();
     int size = _data.at(index)->size();
+    _centroids[i] = new VSData(size, features);
     
     LOG("Initializing cluster %d to:\n", i);
     for (int j = 0; j < size; j++)
       LOG("\t%d:%f", j, features[j]);
     LOG("\n", NULL);
-
-    _centroids[i] = new VSData(size, features);
   }
 }
 
