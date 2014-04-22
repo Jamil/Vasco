@@ -14,38 +14,7 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
 
   // Number of clusters must be less than size of training set
   assert(k <= data.size());
-
-  // Initialize centroids
-  srand(time(NULL));
-  set<int> chosen;
-
-  VSData *previous = NULL;
-
-  for (int i = 0; i < _k; i++) {
-    bool duplicate = true;
-    
-    // Assign probabilities proportional to the distance to last chosen point
-    
-    int index = rand() % _data.size();
-    do {
-      duplicate = false;
-      if (chosen.count(index)) {
-        duplicate = true;
-        index = rand() % _data.size();
-      }
-    } while (duplicate);
-
-    chosen.insert(index);
-
-    float* features = _data.at(index)->features();
-    int size = _data.at(index)->size();
-    _centroids[i] = new VSData(size, features);
-    
-    LOG("Initializing cluster %d to:\n", i);
-    for (int j = 0; j < size; j++)
-      LOG("\t%d:%f", j, features[j]);
-    LOG("\n", NULL);
-  }
+  initializeCentroids();
 }
 
 VSCluster::~VSCluster() {
@@ -56,6 +25,71 @@ VSCluster::~VSCluster() {
   delete [] _centroids;
   delete [] _clusters;
   delete [] _clusters_prev;
+}
+
+void VSCluster::initializeCentroids() {
+  // Initialize centroids
+  srand(time(NULL));
+  set<int> chosen;
+
+  VSData *previous = NULL;
+
+  int index = -1;
+  for (int i = 0; i < _k; i++) {
+    float weights[_data.size()]; 
+    
+    if (!previous) {
+      // Initialize index to random data point
+      index = rand() % _data.size();
+    }
+    else {
+      // Assign a weight proportional to the square of the distance to last chosen point
+      float sum = 0;
+      for (int j = 0; j < _data.size(); j++) {
+        weights[j] = distance(_data.at(j), previous);
+        sum += weights[j];
+        LOG("Training example %d, weight %f\n", j, weights[j]);
+      }
+
+      // Now select a training example at random
+      float random = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/sum));
+      LOG("Random value: %f\n", random);
+      bool duplicate = false;
+      do {
+        duplicate = false;
+        for (int j = 0; j < _data.size(); j++) {
+          if (random < weights[j]) {
+            LOG("Selecting %d\n", j);
+            index = j;
+            break;
+          }
+          else {
+            random -= weights[j];
+          }
+        }
+
+        if (chosen.count(index)) {
+          random = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/sum));
+          duplicate = true;
+          LOG("Duplicate. Trying again.\n", NULL);
+          LOG("Random value: %f\n", random);
+        }
+      } while (duplicate);
+    }
+
+    chosen.insert(index);
+
+    float* features = _data.at(index)->features();
+    int size = _data.at(index)->size();
+    _centroids[i] = new VSData(size, features);
+    previous = _centroids[i];
+
+    LOG("Initializing cluster %d to:\n", i);
+    for (int j = 0; j < size; j++)
+      LOG("\t%d:%f", j, features[j]);
+    LOG("\n", NULL);
+  }
+
 }
 
 void VSCluster::update() {
