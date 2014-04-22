@@ -32,6 +32,7 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
       if (chosen.count(index)) {
         duplicate = true;
         index = rand() % _data.size();
+      }
     } while (duplicate);
 
     chosen.insert(index);
