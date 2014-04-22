@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <set>
 #include "VSCluster.h"
 
 VSCluster::VSCluster(int k, vector<VSData*> data) {
@@ -16,24 +17,26 @@ VSCluster::VSCluster(int k, vector<VSData*> data) {
 
   // Initialize centroids
   srand(time(NULL));
-  
-  int chosen[k]; // Make sure we don't initialize two centroids to the same value 
-  memset(chosen, -1, k); // Set all to -1 (0xFFFFFFFF)
+  set<int> chosen;
+
+  VSData *previous = NULL;
 
   for (int i = 0; i < _k; i++) {
     bool duplicate = true;
+    
+    // Assign probabilities proportional to the distance to last chosen point
     
     int index = rand() % _data.size();
     do {
       duplicate = false;
       for (int j = 0; j < i; j++)
-        if (chosen[j] == index) {
+        if (chosen.count(index)) {
           duplicate = true;
           index = rand() % _data.size();
       }
     } while (duplicate);
 
-    chosen[i] = index;
+    chosen.insert(index);
 
     float* features = _data.at(index)->features();
     int size = _data.at(index)->size();
