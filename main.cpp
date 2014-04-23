@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 #include "VSData.h"
-#include "VSStochasticLearner.h"
-#include "VSBatchDescentLearner.h"
-#include "VSCluster.h"
+#include "StochasticLearner.h"
+#include "BatchDescentLearner.h"
+#include "Cluster.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
     data.push_back(newData);
   }
 
-  VSCluster learner(4, data);
+  Cluster learner(4, data);
   learner.update();
 
   /*

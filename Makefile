@@ -1,7 +1,7 @@
 EXEC = vasco 
 CC = g++
 SRC = main.cpp 
-OBJ = VSData.o VSSupervisedData.o VSBatchDescentLearner.o VSStochasticLearner.o VSLearner.o VSCluster.o
+OBJ = VSData.o VSSupervisedData.o BatchDescentLearner.o StochasticLearner.o VSLearner.o Cluster.o
 CFLAGS = -Werror -g -ggdb
 LDFLAGS = 
 
@@ -19,14 +19,14 @@ VSSupervisedData.o: VSSupervisedData.cpp VSSupervisedData.h
 VSLearner.o: VSLearner.cpp VSLearner.h
 	$(CC) $(CFLAGS) -c VSLearner.cpp -o VSLearner.o
 
-VSBatchDescentLearner.o: VSBatchDescentLearner.cpp VSBatchDescentLearner.h
-	$(CC) $(CFLAGS) -c VSBatchDescentLearner.cpp -o VSBatchDescentLearner.o
+BatchDescentLearner.o: BatchDescentLearner.cpp BatchDescentLearner.h
+	$(CC) $(CFLAGS) -c BatchDescentLearner.cpp -o BatchDescentLearner.o
 
-VSStochasticLearner.o: VSStochasticLearner.cpp VSStochasticLearner.h
-	$(CC) $(CFLAGS) -c VSStochasticLearner.cpp -o VSStochasticLearner.o
+StochasticLearner.o: StochasticLearner.cpp StochasticLearner.h
+	$(CC) $(CFLAGS) -c StochasticLearner.cpp -o StochasticLearner.o
 
-VSCluster.o: VSCluster.cpp VSCluster.h
-	$(CC) $(CFLAGS) -c VSCluster.cpp -o VSCluster.o
+Cluster.o: Cluster.cpp Cluster.h
+	$(CC) $(CFLAGS) -c Cluster.cpp -o Cluster.o
 
 clean:
 	rm -f *.o 
