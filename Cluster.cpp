@@ -5,12 +5,12 @@
 #include <set>
 #include "Cluster.h"
 
-Cluster::Cluster(int k, vector<VSData*> data) {
+Cluster::Cluster(int k, vector<Data*> data) {
   _data = data;
   _k = k;
-  _centroids = (VSData**)malloc(sizeof(VSData*)*k);
-  _clusters = new vector<VSData*>[k];
-  _clusters_prev = new vector<VSData*>[k];
+  _centroids = (Data**)malloc(sizeof(Data*)*k);
+  _clusters = new vector<Data*>[k];
+  _clusters_prev = new vector<Data*>[k];
 
   // Number of clusters must be less than size of training set
   assert(k <= data.size());
@@ -32,7 +32,7 @@ void Cluster::initializeCentroids() {
   srand(time(NULL));
   set<int> chosen;
 
-  VSData *previous = NULL;
+  Data *previous = NULL;
 
   int index = -1;
   for (int i = 0; i < _k; i++) {
@@ -82,7 +82,7 @@ void Cluster::initializeCentroids() {
 
     float* features = _data.at(index)->features();
     int size = _data.at(index)->size();
-    _centroids[i] = new VSData(size, features);
+    _centroids[i] = new Data(size, features);
     previous = _centroids[i];
 
     LOG("Initializing cluster %d to:\n", i);
@@ -97,7 +97,7 @@ void Cluster::update() {
   updateUntilConvergence();
 }
 
-double Cluster::distance(VSData* a, VSData* b) {
+double Cluster::distance(Data* a, Data* b) {
   int n = a->size();
   int m = b->size();
 
@@ -138,7 +138,7 @@ bool Cluster::step() {
   }
 
   for (int i = 0; i < set_size; i++) {
-    vector<VSData*> *closestCluster;
+    vector<Data*> *closestCluster;
     int cc = -1;
     double minDist = DBL_MAX;
 
@@ -192,7 +192,7 @@ void Cluster::updateCentroids() {
     float sums[featureCount];
     memset(sums, 0, sizeof(sums));
     for (int j = 0; j < clusterSize; j++) {
-      VSData *currentData = _clusters[i].at(j);
+      Data *currentData = _clusters[i].at(j);
       float *currentFeatures = currentData->features();
       for (int n = 0; n < featureCount; n++) {
         sums[n] += currentFeatures[n];
@@ -203,7 +203,7 @@ void Cluster::updateCentroids() {
     }
     if (_centroids[i])
       delete _centroids[i];
-    _centroids[i] = new VSData(featureCount, sums);
+    _centroids[i] = new Data(featureCount, sums);
   }
 }
 

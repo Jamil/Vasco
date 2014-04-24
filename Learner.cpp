@@ -1,12 +1,12 @@
 
-#include "VSLearner.h"
+#include "Learner.h"
 
 #define STOCHASTIC_TOLERANCE 0.00001
 
 #pragma mark - Constructor and Destructor
 
-VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate) {
-    /* You can initialize a VSLearner with no data, but you should pass an empty vector rather than NULL. The training examples should be stored OUTSIDE of the class. */
+Learner::Learner(int numParams, vector<SupervisedData*> data, float learningRate) {
+    /* You can initialize a Learner with no data, but you should pass an empty vector rather than NULL. The training examples should be stored OUTSIDE of the class. */
     
     _learningRate = learningRate;
     _data = data;
@@ -20,7 +20,7 @@ VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learni
     _hypothesis = NULL;
 }
 
-VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y)) {
+Learner::Learner(int numParams, vector<SupervisedData*> data, float learningRate, float (*hypothesis)(float y)) {
     _learningRate = learningRate;
     _data = data;
     
@@ -33,16 +33,16 @@ VSLearner::VSLearner(int numParams, vector<VSSupervisedData*> data, float learni
     _hypothesis = hypothesis;
 }
 
-VSLearner::~VSLearner() {
+Learner::~Learner() {
     delete _parameterValues;
 }
 
 #pragma mark - Public Functions
 
-int VSLearner::numParams() {
+int Learner::numParams() {
     return _M;
 }
 
-double* VSLearner::params() {
+double* Learner::params() {
   return _parameterValues;
 }

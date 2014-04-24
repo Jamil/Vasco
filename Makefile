@@ -1,7 +1,7 @@
 EXEC = vasco 
 CC = g++
 SRC = main.cpp 
-OBJ = VSData.o VSSupervisedData.o BatchDescentLearner.o StochasticLearner.o VSLearner.o Cluster.o
+OBJ = Data.o SupervisedData.o BatchDescentLearner.o StochasticLearner.o Learner.o Cluster.o
 CFLAGS = -Werror -g -ggdb
 LDFLAGS = 
 
@@ -10,14 +10,14 @@ all: vasco
 vasco: $(OBJ) $(SRC)
 	$(CC) $(CFLAGS) $(OBJ) $(SRC) -o $(EXEC)
 
-VSData.o: VSData.cpp VSData.h
-	$(CC) $(CFLAGS) -c VSData.cpp -o VSData.o
+Data.o: Data.cpp Data.h
+	$(CC) $(CFLAGS) -c Data.cpp -o Data.o
 
-VSSupervisedData.o: VSSupervisedData.cpp VSSupervisedData.h
-	$(CC) $(CFLAGS) -c VSSupervisedData.cpp -o VSSupervisedData.o
+SupervisedData.o: SupervisedData.cpp SupervisedData.h
+	$(CC) $(CFLAGS) -c SupervisedData.cpp -o SupervisedData.o
 
-VSLearner.o: VSLearner.cpp VSLearner.h
-	$(CC) $(CFLAGS) -c VSLearner.cpp -o VSLearner.o
+Learner.o: Learner.cpp Learner.h
+	$(CC) $(CFLAGS) -c Learner.cpp -o Learner.o
 
 BatchDescentLearner.o: BatchDescentLearner.cpp BatchDescentLearner.h
 	$(CC) $(CFLAGS) -c BatchDescentLearner.cpp -o BatchDescentLearner.o

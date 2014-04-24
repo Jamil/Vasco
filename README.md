@@ -7,7 +7,7 @@ Some background to the theory at http://blog.jamild.com/post/77023959349/from-th
 
 ## Usage (Stochastic and Batch Gradient Descent)  
   
-tl;dr: VSSupervisedData is your training example, the VSLearner subclasses are the model.   
+tl;dr: VSSupervisedData is your training example, the Learner subclasses are the model.   
   
 First initialize a vector of type __VSSupervisedData*__. This will be your training set.
 
@@ -32,10 +32,10 @@ float hyp(float y) {
 }  
 ``
 
-Now, initialize the learner instance; either __VSStochasticLearner__ or __VSBatchDescentLearner__ -- __VSLearner__ is an abstract data class. Include the number of parameters/features, the vector of __VSSupervisedData__ s, and the desired learning rate.  
+Now, initialize the learner instance; either __VSStochasticLearner__ or __VSBatchDescentLearner__ -- __Learner__ is an abstract data class. Include the number of parameters/features, the vector of __VSSupervisedData__ s, and the desired learning rate.  
 ``VSStochasticLearner learner(num_features, training_set, learning_rate)``  
 
-Then, simply call the update method of __VSLearner__ (perhaps on another thread -- it can be very slow for large data sets or a large number of parameters). This should set the `_parameterValues` variable.  
+Then, simply call the update method of __Learner__ (perhaps on another thread -- it can be very slow for large data sets or a large number of parameters). This should set the `_parameterValues` variable.  
 
 To get a hypothesis for unknown/untrained data, just initialize a __VSData__ instance in the same way as __VSSupervisedData__, except without the last argument:  
 ``VSData *newData = new VSData(num_features, features);`` 

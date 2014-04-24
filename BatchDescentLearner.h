@@ -10,17 +10,17 @@
 #define __Vasco__BatchDescentLearner__
 
 #include <iostream>
-#include "VSLearner.h"
+#include "Learner.h"
 
-class BatchDescentLearner : public VSLearner {
+class BatchDescentLearner : public Learner {
 public:
-    BatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
-    BatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y));
+    BatchDescentLearner(int numParams, vector<SupervisedData*> data, float learningRate);
+    BatchDescentLearner(int numParams, vector<SupervisedData*> data, float learningRate, float (*hypothesis)(float y));
     
     void update();
     void updateUntilConvergence();
 
-    double getHypothesisForData(VSData* data);   
+    double getHypothesisForData(Data* data);   
 private:
     double** updateParameters();
 };

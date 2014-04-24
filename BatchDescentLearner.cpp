@@ -12,11 +12,11 @@
 
 #pragma mark - Constructor
 
-BatchDescentLearner::BatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
+BatchDescentLearner::BatchDescentLearner(int numParams, vector<SupervisedData*> data, float learningRate) : Learner(numParams, data, learningRate) {
 }
 
 
-BatchDescentLearner::BatchDescentLearner(int numParams, vector<VSSupervisedData*> data, float learningRate, float (*hypothesis)(float y)) : VSLearner(numParams, data, learningRate, hypothesis) {
+BatchDescentLearner::BatchDescentLearner(int numParams, vector<SupervisedData*> data, float learningRate, float (*hypothesis)(float y)) : Learner(numParams, data, learningRate, hypothesis) {
 }
 
 void BatchDescentLearner::update() {
@@ -25,7 +25,7 @@ void BatchDescentLearner::update() {
 
 #pragma mark - Hypothesis
 
-double BatchDescentLearner::getHypothesisForData(VSData* data) {
+double BatchDescentLearner::getHypothesisForData(Data* data) {
   // LMS REGRESSION
   // h_{\theta}(x) = \theta^{T}x
 

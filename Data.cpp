@@ -1,9 +1,9 @@
 
-#include "VSData.h"
+#include "Data.h"
 
 #pragma mark - Constructors and Destructors
 
-VSData::VSData(int features) {
+Data::Data(int features) {
     featureCount = features;
     
     _features = (float*)malloc(sizeof(float)*features);
@@ -12,27 +12,27 @@ VSData::VSData(int features) {
     }
 }
 
-VSData::VSData(int feature_count, float* features) {
+Data::Data(int feature_count, float* features) {
   featureCount = feature_count;
   _features = (float*)malloc(sizeof(float)*feature_count);
   for (int i = 0; i < feature_count; i++)
     _features[i] = features[i];
 }
 
-VSData::VSData(const VSData &oth) {
+Data::Data(const Data &oth) {
   this->featureCount = oth.featureCount;
   this->_features = (float*)malloc(sizeof(float)*oth.featureCount);
   for (int i = 0; i < this->featureCount; i++)
     this->_features[i] = oth._features[i];
 }
 
-VSData::~VSData() {
+Data::~Data() {
   free(_features);
 }
 
 #pragma mark - Setters
 
-void VSData::setFeatures(int num_features, float* features) {
+void Data::setFeatures(int num_features, float* features) {
     assert(num_features == featureCount);
     
     for (int i = 0; i < num_features; i++)
@@ -40,7 +40,7 @@ void VSData::setFeatures(int num_features, float* features) {
 }
 
 
-void VSData::setFeaturesAtIndex(int index, float value) {
+void Data::setFeaturesAtIndex(int index, float value) {
     assert(index < featureCount);
     
     _features[index] = value;
@@ -48,10 +48,10 @@ void VSData::setFeaturesAtIndex(int index, float value) {
 
 #pragma mark - Getters
 
-float* VSData::features() const {
+float* Data::features() const {
     return _features;
 }
 
-int VSData::size() {
+int Data::size() {
   return featureCount;
 }

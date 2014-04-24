@@ -1,6 +1,6 @@
 
-#ifndef __Vasco__VSData__
-#define __Vasco__VSData__
+#ifndef __Vasco__Data__
+#define __Vasco__Data__
 
 #include <iostream>
 #include <vector>
@@ -16,12 +16,12 @@
 
 using namespace std;
 
-class VSData {
+class Data {
 public:
-    VSData(int features);
-    VSData(int feature_count, float* features);
-    VSData(const VSData &oth); // cctor
-    ~VSData();
+    Data(int features);
+    Data(int feature_count, float* features);
+    Data(const Data &oth); // cctor
+    ~Data();
     
     /* Accessors */
     float* features() const;
@@ -36,4 +36,4 @@ protected:
     float *_features; // Parameters; i.e., each theta_{i}
 };
 
-#endif /* defined(__Vasco__VSData__) */
+#endif /* defined(__Vasco__Data__) */

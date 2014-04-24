@@ -12,13 +12,13 @@
 
 #pragma mark - Constructor
 
-StochasticLearner::StochasticLearner(int numParams, vector<VSSupervisedData*> data, float learningRate) : VSLearner(numParams, data, learningRate) {
+StochasticLearner::StochasticLearner(int numParams, vector<SupervisedData*> data, float learningRate) : Learner(numParams, data, learningRate) {
   // No specific initialization needed for derived class
 }
 
 #pragma mark - Hypothesis
 
-double StochasticLearner::getHypothesisForData(VSData *data) {
+double StochasticLearner::getHypothesisForData(Data *data) {
   // LOGISTIC REGRESSION
   // h_{\theta}(x) = \frac{1}{1+e^{-\theta^{T}x}}
 
@@ -43,7 +43,7 @@ void StochasticLearner::step_stochastic(int i, int j, float target) {
   // Where i is the parameter to update, j is the training example
   // Fixed learning rate for now, but may change that later depending on performance
 
-  VSData* data = _data.at(j);
+  Data* data = _data.at(j);
 
   float hypothesis = getHypothesisForData(data);
   float xi = data->features()[i];
@@ -71,7 +71,7 @@ void StochasticLearner::updateUntilConvergence() {
 
     // Iterate through training set
     for (int j = 0; j < examples; j++) {
-      VSSupervisedData *example = _data.at(j);
+      SupervisedData *example = _data.at(j);
       float target = example->supervisedValue();
       // Update each parameter
       for (int i = 0; i < _M; i++) {

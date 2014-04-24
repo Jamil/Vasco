@@ -10,15 +10,15 @@
 #define __Vasco__StochasticLearner__
 
 #include <iostream>
-#include "VSLearner.h"
+#include "Learner.h"
 
-class StochasticLearner : public VSLearner {
+class StochasticLearner : public Learner {
 public:
-    StochasticLearner(int numParams, vector<VSSupervisedData*> data, float learningRate);
+    StochasticLearner(int numParams, vector<SupervisedData*> data, float learningRate);
     
     void update();
     void updateUntilConvergence();
-    double getHypothesisForData(VSData* data);
+    double getHypothesisForData(Data* data);
 
 private:
     void step_stochastic(int i, int j, float target);
