@@ -10,9 +10,9 @@ class Neuron {
 public:
   Neuron();
   ~Neuron();
-  float input(float* x);
+  float result(VSData &data);
+  bool fired(VSData &data);
 
 private:
   VSStochasticLearner *_learner;
-
 };
