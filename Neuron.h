@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Data.h"
-#include "VSStochasticLearner.h"
+#include "StochasticLearner.h"
 
 class Neuron {
   // A neuron contains
@@ -14,5 +14,5 @@ public:
   bool fired(VSData &data);
 
 private:
-  VSStochasticLearner *_learner;
+  StochasticLearner *_learner;
 };
