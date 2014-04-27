@@ -32,6 +32,8 @@ int main() {
       Data *newData = new Data(num_features);
       newData->setFeatures(num_features, vals);
       data.push_back(newData);
+  
+      set_size++;
 
       free(cline);
     }
