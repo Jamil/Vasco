@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Data.h"
+#include "SupervisedData.h"
 #include "StochasticLearner.h"
 
 class Neuron {
@@ -8,11 +8,8 @@ class Neuron {
   //    Output - The result of applying a linear combination of x_{i}s to an activation function
 
 public:
-  Neuron();
+  Neuron(int inputs);
   ~Neuron();
-  float result(VSData &data);
-  bool fired(VSData &data);
 
 private:
-  StochasticLearner *_learner;
 };
