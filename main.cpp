@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <readline/readline.h>
 #include "Data.h"
 #include "Cluster.h"
 
@@ -22,17 +23,17 @@ int main() {
 
       char* cline = strdup(line.c_str());
       char* elem = strtok(cline, ",");
-      
+
       float vals[4] = {0};
       for (int i = 0; i < 4; i++) {
         vals[i] = atof(elem);
         elem = strtok(NULL, ",");
       }
-      
+
       Data *newData = new Data(num_features);
       newData->setFeatures(num_features, vals);
       data.push_back(newData);
-  
+
       set_size++;
 
       free(cline);
@@ -45,6 +46,34 @@ int main() {
 
   Cluster learner(3, data);
   learner.update();
+
+  bool quit = false;
+  while (!quit) {
+    char* line = (char*)malloc(sizeof(char)*100);
+    size_t nbytes = 99;
+    printf(">> ");
+    getline(&line, &nbytes, stdin);
+    for (int i = 0; i < strlen(line); i++)
+      if (line[i] == '\n')
+        line[i] = '\0';
+    if (!strcmp(line, "quit")) {
+      quit = true;
+    }
+    else {
+      float params[4] = {0};
+      stringstream ss(line);
+      for (int i = 0; i < 4; i++) {
+        ss >> params[i];
+      }
+
+      Data *newData = new Data(num_features);
+      newData->setFeatures(num_features, params);
+      learner.classify(newData);
+      free(newData);
+    }
+
+    free(line);
+  }
 
   for (int i = 0; i < set_size; i++) {
     delete data[i];
