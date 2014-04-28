@@ -43,7 +43,7 @@ int main() {
   if (!data.size())
     return 1;
 
-  Cluster learner(4, data);
+  Cluster learner(3, data);
   learner.update();
 
   for (int i = 0; i < set_size; i++) {

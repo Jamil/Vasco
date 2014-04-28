@@ -49,18 +49,15 @@ void Cluster::initializeCentroids() {
         weights[j] = distance(_data.at(j), previous);
         weights[j] *= weights[j];
         sum += weights[j];
-        LOG("Training example %d, weight %f\n", j, weights[j]);
       }
 
       // Now select a training example at random
       float random = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/sum));
-      LOG("Random value: %f\n", random);
       bool duplicate = false;
       do {
         duplicate = false;
         for (int j = 0; j < _data.size(); j++) {
           if (random < weights[j]) {
-            LOG("Selecting %d\n", j);
             index = j;
             break;
           }
@@ -72,8 +69,6 @@ void Cluster::initializeCentroids() {
         if (chosen.count(index)) {
           random = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/sum));
           duplicate = true;
-          LOG("Duplicate. Trying again.\n", NULL);
-          LOG("Random value: %f\n", random);
         }
       } while (duplicate);
     }
@@ -154,26 +149,19 @@ bool Cluster::step() {
     // add to closest cluster
     closestCluster->push_back(_data.at(i));
   }
-  LOG("Reassigned data set.\n", NULL);
  
   // Check to see if no change
-  LOG("Checking for convergence\n", NULL);
   for (int i = 0; i < _k; i++) {
-    LOG("Cluster %d\n", i);
     int vecSize = _clusters[i].size();
     int prevSize = _clusters_prev[i].size();
   
-    LOG("Previous size: %d, Current size: %d\n", prevSize, vecSize);
     if (vecSize != prevSize)
       return false;
 
-    LOG("Comparison:\n", NULL);
     for (int j = 0; j < vecSize; j++) {
-      LOG("\t0x%lx\t0x%lx\n", (unsigned long int)(_clusters_prev[i].at(j)), (unsigned long int)(_clusters[i].at(j)));
       if (_clusters_prev[i].at(j) != _clusters[i].at(j))
         return false;
     }
-    LOG("\n", NULL);
   }
 
   return true; // return true if no change
