@@ -44,35 +44,25 @@ int main() {
   if (!data.size())
     return 1;
 
-  Cluster learner(3, data);
-  learner.update();
+  // Repeatedly classify
 
-  bool quit = false;
-  while (!quit) {
-    char* line = (char*)malloc(sizeof(char)*100);
-    size_t nbytes = 99;
-    printf(">> ");
-    getline(&line, &nbytes, stdin);
-    for (int i = 0; i < strlen(line); i++)
-      if (line[i] == '\n')
-        line[i] = '\0';
-    if (!strcmp(line, "quit")) {
-      quit = true;
-    }
-    else {
-      float params[4] = {0};
-      stringstream ss(line);
-      for (int i = 0; i < 4; i++) {
-        ss >> params[i];
+  for (int p = 0; p < 10; p++) {
+    Cluster learner(3, data);
+    learner.update();
+    float** centroids = learner.centroids();
+
+    for (int i = 0; i < 3; i++) {
+      cout << "Centroid " << i << endl;
+      for (int j = 0; j < 4; j++) {
+        cout << "\t" << centroids[i][j];
       }
-
-      Data *newData = new Data(num_features);
-      newData->setFeatures(num_features, params);
-      learner.classify(newData);
-      free(newData);
+      cout << endl;
     }
 
-    free(line);
+    for (int i = 0; i < 3; i++)
+      free(centroids[i]);
+    free(centroids);
+    cout << endl << endl;
   }
 
   for (int i = 0; i < set_size; i++) {

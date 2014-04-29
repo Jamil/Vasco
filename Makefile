@@ -3,7 +3,7 @@ CC = g++
 SRC = main.cpp 
 OBJ = Data.o SupervisedData.o BatchDescentLearner.o StochasticLearner.o Learner.o Cluster.o
 CFLAGS = -Werror -g -ggdb
-LDFLAGS = 
+LDFLAGS = -lreadline
 
 all: vasco
 

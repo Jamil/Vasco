@@ -167,6 +167,20 @@ bool Cluster::step() {
   return true; // return true if no change
 }
 
+float** Cluster::centroids() {
+  assert(*_centroids);
+  int numParams = (*_centroids)->size();
+  float** c = new float*[_k];
+  for (int i = 0; i < _k; i++) {
+    c[i] = new float[numParams];
+    float* features = _centroids[i]->features();
+    for (int j = 0; j < numParams; j++) {
+      c[i][j] = features[j];
+    }
+  }
+  return c;
+}
+
 void Cluster::updateCentroids() {
   // Examine first training example to get feature count, etc 
   if (!_data.size())
@@ -209,5 +223,19 @@ void Cluster::updateUntilConvergence() {
       LOG("\t%d:%f", j, _centroids[i]->features()[j]);
     LOG("\n", NULL);
   }
+}
+
+int Cluster::classify(Data *data) {
+  float minDist = FLT_MAX;
+  int classification = -1;
+  for (int i = 0; i < _k; i++) {
+    float dist = distance(data, _centroids[i]);
+    if (dist < minDist) {
+      minDist = dist;
+      classification = i;
+    }
+  }
+  cout << "Classification: " << classification << endl;
+  return classification;
 }
 

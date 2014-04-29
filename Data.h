@@ -6,7 +6,7 @@
 #include <vector>
 #include <cassert>
 
-#define PRINT_LOG
+//#define PRINT_LOG
 
 #ifdef PRINT_LOG
 #define LOG(string, ...) printf(string, __VA_ARGS__)

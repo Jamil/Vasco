@@ -8,6 +8,8 @@ public:
   Cluster(int k, vector<Data*> data);
   ~Cluster();
   void update();
+  int classify(Data *data);
+  float** centroids();
 
 private:
   vector<Data*> _data;              // Training set (unsupervised)
