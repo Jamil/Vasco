@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <readline/readline.h>
+#include <unistd.h>
 #include "Data.h"
 #include "Cluster.h"
 
@@ -63,6 +64,7 @@ int main() {
       free(centroids[i]);
     free(centroids);
     cout << endl << endl;
+    sleep(1); // ensure randomness
   }
 
   for (int i = 0; i < set_size; i++) {
