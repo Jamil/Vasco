@@ -47,6 +47,7 @@ int main() {
 
   // Repeatedly classify
 
+  srand(time(NULL));
   for (int p = 0; p < 10; p++) {
     Cluster learner(3, data);
     learner.update();
@@ -64,7 +65,6 @@ int main() {
       free(centroids[i]);
     free(centroids);
     cout << endl << endl;
-    sleep(1); // ensure randomness
   }
 
   for (int i = 0; i < set_size; i++) {

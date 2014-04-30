@@ -29,7 +29,6 @@ Cluster::~Cluster() {
 
 void Cluster::initializeCentroids() {
   // Initialize centroids
-  srand(time(NULL));
   set<int> chosen;
 
   Data *previous = NULL;
