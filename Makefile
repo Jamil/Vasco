@@ -1,14 +1,16 @@
-EXEC = vasco 
+EXEC = kmeans-test-1 kmeans-test-2
 CC = g++
 SRC = main.cpp 
 OBJ = Data.o SupervisedData.o BatchDescentLearner.o StochasticLearner.o Learner.o Cluster.o
 CFLAGS = -Werror -g -ggdb
 LDFLAGS = -lreadline
 
-all: vasco
+lib: $(OBJ)
+tests: kmeans
 
-vasco: $(OBJ) $(SRC)
-	$(CC) $(CFLAGS) $(OBJ) $(SRC) -o $(EXEC)
+###############
+# THE LIBRARY #
+###############
 
 Data.o: Data.cpp Data.h
 	$(CC) $(CFLAGS) -c Data.cpp -o Data.o
@@ -28,6 +30,23 @@ StochasticLearner.o: StochasticLearner.cpp StochasticLearner.h
 Cluster.o: Cluster.cpp Cluster.h
 	$(CC) $(CFLAGS) -c Cluster.cpp -o Cluster.o
 
+#################
+# K-MEANS TESTS #
+#################
+
+kmeans: KMeansTest1 KMeansTest2 
+KMEANS = Cluster.o SupervisedData.o Data.o
+
+KMeansTest1: test-kmeans-1.cpp
+	$(CC) $(CFLAGS) test-kmeans-1.cpp $(KMEANS) -o kmeans-test-1
+
+KMeansTest2: test-kmeans-2.cpp
+	$(CC) $(CFLAGS) test-kmeans-2.cpp $(KMEANS) -o kmeans-test-2
+
+#########
+# CLEAN #
+#########
+
 clean:
 	rm -f *.o 
-	rm vasco 
+	rm $(EXEC)
