@@ -23,24 +23,24 @@ Learner::Learner(int numParams, vector<SupervisedData*> data, float learningRate
 Learner::Learner(int numParams, vector<SupervisedData*> data, float learningRate, float (*hypothesis)(float y)) {
     _learningRate = learningRate;
     _data = data;
-    
+
     // Initialize x_{i} values to the zero vector
     _M = numParams;
     _parameterValues = (double*)malloc(sizeof(double) * _M);
     for (int i = 0; i < _M; i++)
-        _parameterValues[i] = 0;
+      _parameterValues[i] = 0;
 
     _hypothesis = hypothesis;
 }
 
 Learner::~Learner() {
-    delete _parameterValues;
+  delete _parameterValues;
 }
 
 #pragma mark - Public Functions
 
 int Learner::numParams() {
-    return _M;
+  return _M;
 }
 
 double* Learner::params() {
