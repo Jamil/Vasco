@@ -1,12 +1,15 @@
 #include <iostream>
 
 class Node {
+public:
+  double* getValue();
+
 protected:
-  int size;
-  double* values;
+  int _size;
+  double _value;
 }
 
 class OutputNode : Node {
 public:
-  void setValues(double* values);
+  void setValue(double value);
 }
