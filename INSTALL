@@ -1,0 +1,8 @@
+# make lib
+Creates all the object files
+
+# make tests
+Creates all the tests (executables), including any dependencies
+
+# make kmeans
+Creates only the tests and object files required for k-means clustering
