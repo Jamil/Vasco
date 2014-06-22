@@ -2,7 +2,7 @@
 
 class Node {
 public:
-  Node(int size, Neuron* source, Neuron* destination);
+  Node(int _num_destinations, Neuron* source, Neuron* destination);
 
   double* getValue();
   
@@ -10,7 +10,6 @@ public:
   Neuron** _destinations;
 
 protected:
-  int _size;
   int _num_destinations;
   double _value;
 }

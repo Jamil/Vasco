@@ -1,7 +1,6 @@
 #include "Node.h"
 
-Node::Node(int size, int _num_destinations, Neuron* source, Neuron** destinations) {
-  _size = size;
+Node::Node(int _num_destinations, Neuron* source, Neuron** destinations) {
   _value = 0;
   _source = source;
 
