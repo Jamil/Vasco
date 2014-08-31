@@ -9,12 +9,14 @@ Node::Node(int _num_destinations, Neuron* source, Neuron** destinations) {
 }
 
 double Node::getValue() {
-  return _value >= 0.5 ? 1.0 : 0.0;
+  return _value;
 }
 
-void OutputNode::setValues(double value) {
-  assert(value < 1);
-  assert(value > 0);
-
-  _value = value;
+void OutputNode::setValue(double value) {
+  if (value > 1)
+    _value = 1;
+  else if (value < 0)
+    _value = 0;
+  else
+    _value = value;
 }

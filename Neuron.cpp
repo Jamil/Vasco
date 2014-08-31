@@ -23,3 +23,7 @@ void Neuron::single_update() {
   
   output->setValue(result);
 }
+
+bool Neuron::is_active() {
+  return output;
+}

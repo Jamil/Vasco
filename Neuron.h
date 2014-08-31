@@ -17,6 +17,7 @@ public:
   void update();
   void single_update();
   double sigmoid(double x);
+  bool is_active();
 
 private:
   int _num_inputs;
