@@ -11,6 +11,7 @@ class Neuron {
 
 public:
   Neuron(int num_inputs, Node** inputs, Node* output);
+  Neuron(int num_inputs, Node** inputs, Node* output, double (*activaion)(double input));
   ~Neuron();
 
   void update();
@@ -20,6 +21,7 @@ public:
 private:
   int _num_inputs;
   double* parameters;
+  double (*_activation)(double input);
 
   // Both of these really point to OutputNodes, but there's no access to the inputs' setter
   OutputNode** outputs;

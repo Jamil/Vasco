@@ -1,5 +1,14 @@
 #include "Neuron.h"
 
+Neuron(int num_inputs, Node** inputs, Node* output) {
+  // Default to the sigmoid function as the activation function
+  _activation = sigmoid;
+}
+
+Neuron(int num_inputs, Node** inputs, Node* output, double (*activaion)(double input)) {
+  _activation = activation;
+}
+
 double Neuron::sigmoid(double x) {
   double denom = 1 + exp(-1*x);
   return 1/denom;
