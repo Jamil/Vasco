@@ -12,6 +12,9 @@ double Node::getValue() {
   return _value;
 }
 
+OutputNode::OutputNode(int _num_destinations, Neuron* source, Neuron** destinations) : Node(_num_destinations, source, destinations) {
+}
+
 void OutputNode::setValue(double value) {
   if (value > 1)
     _value = 1;

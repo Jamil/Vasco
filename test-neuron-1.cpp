@@ -13,7 +13,10 @@ int main() {
   Neuron* neuron = NULL;
 
   // Declare pointers to input nodes
-  Node** inputs = new Node(1, )
+  Node** inputs = new Node[NUM_INPUTS]
   for (int i = 0; i < NUM_INPUTS; i++)
-    inputs[i] = new Node()
+    inputs[i] = new Node(1, NULL, &neuron)
+
+  // Declare output node
+  Node* output = new OutputNode(0, NULL, NULL);
 }

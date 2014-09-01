@@ -16,5 +16,7 @@ protected:
 
 class OutputNode : Node {
 public:
+  OutputNode(int _num_destinations, Neuron* source, Neuron* destination);
+
   void setValue(double value);
 }
