@@ -7,12 +7,12 @@ Some background to the theory at http://blog.jamild.com/post/77023959349/from-th
 
 ## Usage (Stochastic and Batch Gradient Descent)  
   
-tl;dr: VSSupervisedData is your training example, the Learner subclasses are the model.   
+tl;dr: SupervisedData is your training example, the Learner subclasses are the model.   
   
-First initialize a vector of type __VSSupervisedData*__. This will be your training set.
+First initialize a vector of type __SupervisedData*__. This will be your training set.
 
-For each training example, initialize a __VSSupervisedData__ instance dynamically with the desired number of features (this number should be consistent among one set):  
-``VSSupervisedData *newData = new VSSupervisedData(num_features);``   
+For each training example, initialize a __SupervisedData__ instance dynamically with the desired number of features (this number should be consistent among one set):  
+``SupervisedData *newData = new SupervisedData(num_features);``   
 
 Then set the features by passing an array of type __float__ to the method __setFeatures__:  
 ``newData->setFeatures(num_features, features);``  
@@ -21,7 +21,7 @@ Finally, set the supervised training value -- the value that the model "should" 
 ``newData->setSupervisedValue(target);``  
 
 Alternatively, you can call a constructor that does all this in one step:  
-``VSSupervisedData *newData = new VSSupervisedData(num_features, features, target);``  
+``SupervisedData *newData = new SupervisedData(num_features, features, target);``  
 
 Now, create your hypothesis function. This is operating under the assumption that the output is a linear combination of the parameters and the features (i.e. sum of all the x-sub-i and theta-sub-i). For example, a sigmoid activation function would be like so:
 ``
@@ -32,13 +32,13 @@ float hyp(float y) {
 }  
 ``
 
-Now, initialize the learner instance; either __VSStochasticLearner__ or __VSBatchDescentLearner__ -- __Learner__ is an abstract data class. Include the number of parameters/features, the vector of __VSSupervisedData__ s, and the desired learning rate.  
-``VSStochasticLearner learner(num_features, training_set, learning_rate)``  
+Now, initialize the learner instance; either __StochasticLearner__ or __BatchDescentLearner__ -- __Learner__ is an abstract data class. Include the number of parameters/features, the vector of __SupervisedData__ s, and the desired learning rate.  
+``StochasticLearner learner(num_features, training_set, learning_rate)``  
 
 Then, simply call the update method of __Learner__ (perhaps on another thread -- it can be very slow for large data sets or a large number of parameters). This should set the `_parameterValues` variable.  
 
-To get a hypothesis for unknown/untrained data, just initialize a __VSData__ instance in the same way as __VSSupervisedData__, except without the last argument:  
-``VSData *newData = new VSData(num_features, features);`` 
+To get a hypothesis for unknown/untrained data, just initialize a __Data__ instance in the same way as __SupervisedData__, except without the last argument:  
+``Data *newData = new Data(num_features, features);`` 
 
 and call `getHypothesisForData` from the learner instance:  
 ``learner.getHypothesisForData(newData);``  
